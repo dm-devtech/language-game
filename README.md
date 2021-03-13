@@ -1,5 +1,4 @@
-#### Langue Leuchtturm
-#### Language Lighthouse
+#### Langue Leuchtturm (Language Lighthouse)
 
 - A flashcard game for learning languages
 
