@@ -37,6 +37,6 @@ app.get('/', function (req, res) { res.send('Hello'); });
 app.route('/verbs').get(getVerbs).post(addVerb)
 
 // Start server
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3002, () => {
   console.log(`Server listening`)
 })
