@@ -13,6 +13,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "web": "node index.js"
   },
+  "production": {
+  "use_env_variable": "DATABASE_URL",
+  "dialect": "postgres",
+  "dialectOptions": {
+     "ssl": {
+       "require": true
+     }
+   }
+ },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
