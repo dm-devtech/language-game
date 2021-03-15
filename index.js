@@ -5,8 +5,8 @@ const {pool} = require('./config')
 
 const app = express()
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 app.use(cors())
 
 const getVerbs = (request, response) => {
@@ -33,8 +33,10 @@ const addVerb = (request, response) => {
   )
 }
 
-app.get('/verbs', getVerbs)
-app.post('addVerb', addVerb)
+app.route('/verbs')
+   .get(getVerbs)
+   .post(addVerb)
+
 app.get('/', function (req, res) { res.send('Hello'); });
 
 // Start server
