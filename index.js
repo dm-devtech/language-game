@@ -34,11 +34,12 @@ const addVerb = (request, response) => {
 }
 
 app
-  .route('/verbs')
+  .route('/')
   // GET endpoint
   .get(getVerbs)
   // POST endpoint
   .post(addVerb)
+
 
 // Start server
 app.listen(process.env.PORT || 3002, () => {
