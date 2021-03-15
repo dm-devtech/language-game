@@ -33,11 +33,10 @@ const addVerb = (request, response) => {
   )
 }
 
+app.get('/', function (req, res) { res.send('Hello'); });
 app.route('/verbs')
    .get(getVerbs)
    .post(addVerb)
-
-app.get('/', function (req, res) { res.send('Hello'); });
 
 // Start server
 app.listen(process.env.PORT || 3002, () => {
