@@ -19,7 +19,6 @@ const getVerbs = (request, response) => {
 
 const addVerb = (request, response) => {
   const {engverb, gerverb} = request.body
-
   pool.query(
     'INSERT INTO germanverbs (engverb, gerverb) VALUES ($1, $2)',
     [engverb, gerverb],
@@ -33,8 +32,7 @@ const addVerb = (request, response) => {
 }
 
 app.get('/', function (req, res) { res.send('Hello'); });
-app.get('/verbs', function (req, res) { res.send('verbs'); });
-// app.route('/verbs').get(getVerbs).post(addVerb)
+app.route('/verbs').get(getVerbs)
 
 // Start server
 app.listen(process.env.PORT || 3002, () => {
