@@ -34,7 +34,7 @@ const addVerb = (request, response) => {
 }
 
 app
-  .route('/verbs')
+  .route('/')
   // GET endpoint
   .get(getVerbs)
   // POST endpoint
