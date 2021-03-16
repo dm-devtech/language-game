@@ -33,13 +33,7 @@ const addVerb = (request, response) => {
   )
 }
 
-app
-  .route('/verbs')
-  // GET endpoint
-  .get(getVerbs)
-  // POST endpoint
-  .post(addVerb)
-
+app.route('/verbs').get(getVerbs)
 app.get('/', function (req, res) { res.send('Hello'); });
 
 // Start server
