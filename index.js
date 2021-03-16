@@ -51,9 +51,9 @@ app.use(cors())
 const { Pool } = require('pg');
 
 const env = process.env.NODE_ENV
-console.log(env)
+console.log("ENV>>>>>>>>>>>>", env)
 if (env === 'production') {
-    console.log("production")
+    console.log("STATUS>>>>>>>>>>>>>", "production")
     connectionString = {
     connectionString: process.env.DATABASE_URL,
     ssl: true
@@ -61,7 +61,7 @@ if (env === 'production') {
 };
 
 const pool = new Pool(connectionString);
-console.log(pool)
+console.log("pool>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", pool)
 pool.on('connect', () => console.log('connected to db'));
 const data = pool.query('SELECT * FROM germanverbs', (error, results) => {
     if (error) {
@@ -69,5 +69,5 @@ const data = pool.query('SELECT * FROM germanverbs', (error, results) => {
      }
      response.status(200).json(results)
     })
-console.log(data)
+console.log("data>>>>>>>>>>>>>>>>>>>>>>>", data)
 app.get('/', function (req, res) { res.send(data); });
