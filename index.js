@@ -5,8 +5,9 @@ const {pool} = require('./config')
 
 const app = express()
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+app.use(express.static("public"))
 app.use(cors())
 
 const getVerbs = (request, response) => {
@@ -20,7 +21,6 @@ const getVerbs = (request, response) => {
 
 const addVerb = (request, response) => {
   const {engverb, gerverb} = request.body
-
   pool.query(
     'INSERT INTO germanverbs (engverb, gerverb) VALUES ($1, $2)',
     [engverb, gerverb],
@@ -35,6 +35,11 @@ const addVerb = (request, response) => {
 
 app.route('/verbs').get(getVerbs)
 app.get('/', function (req, res) { res.send('Hello'); });
+app.get('/test', function(req, res) {
+  pool.query("SELECT * FROM germanverbs", function(error, result){
+    res.json(result);
+  });
+});
 
 // Start server
 app.listen(process.env.PORT || 3002, () => {
