@@ -3,7 +3,9 @@ const express = require('express')
 const cors = require('cors')
 // const {pool} = require('./config')
 //
+const { Pool } = require('pg');
 const app = express()
+
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
@@ -45,8 +47,6 @@ app.use(cors())
 //
 // // Start server
 
-
-const { Pool } = require('pg');
 
 const env = process.env.NODE_ENV
 console.log("ENV>>>>>>>>>>>>", env)
