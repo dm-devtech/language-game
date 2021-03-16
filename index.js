@@ -33,7 +33,7 @@ const addVerb = (request, response) => {
   )
 }
 
-.get('/db', async (req, res) => {
+app.get('/db', async (req, res) => {
     try {
       const client = await pool.connect();
       const result = await client.query('SELECT * FROM germanverbs');
