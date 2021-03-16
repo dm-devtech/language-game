@@ -38,7 +38,7 @@ app.get('/verbs', async (req, res) => {
       const client = await pool.connect();
       const result = await client.query('SELECT * FROM germanverbs');
       const results = { 'results': (result) ? result.rows : null};
-      res.render('pages/verbs', results );
+      res.send('pages/verbs', results );
       client.release();
     } catch (err) {
       console.error(err);
