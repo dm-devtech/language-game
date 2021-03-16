@@ -35,10 +35,11 @@ const addVerb = (request, response) => {
 
 app.route('/verbs').get(getVerbs)
 app.get('/', function (req, res) { res.send('Hello'); });
+
 app.get('/test', function(req, res) {
   pool.query("SELECT * FROM germanverbs", function(error, result){
-    res.json(result);
-    console.log("success")
+    const sth = res.json(result);
+    console.log(sth)
   });
 });
 
