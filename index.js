@@ -1,7 +1,14 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const {pool} = require('./config')
+
+const { Pool } = require('pg');
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
 const app = express()
 
@@ -46,7 +53,7 @@ app.get('/db', async (req, res) => {
     }
   })
 
-app.route('/verbs').get('/verbs', getVerbs).post('addVerb)
+app.get('/verbs', getVerbs).post('addVerb)
 app.get('/', function (req, res) { res.send('Hello'); });
 
 // Start server
