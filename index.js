@@ -33,7 +33,18 @@ const addVerb = (request, response) => {
 }
 
 app.get('/', function (req, res) { res.send('Hello'); });
-app.route('/verbs').get(getVerbs).post(addVerb)
+app.get('/verbs', async (req, res) => {
+    try {
+      const client = await pool.connect();
+      const result = await client.query('SELECT * FROM germanverbs');
+      const results = { 'results': (result) ? result.rows : null};
+      res.render('pages/verbs', results );
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
+  })
 
 // Start server
 app.listen(process.env.PORT || 3002, () => {
