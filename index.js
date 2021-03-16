@@ -50,23 +50,18 @@
 
 const { Pool } = require('pg');
 
-const env = process.env.NODE_ENV || 'development';
-
-let connectionString = {
-    user: secrets.user,
-    database: secrets.testDb,
-    host: secrets.host
-};
-// checking to know the environment and suitable connection string to use
-if (env === 'development') {
-    console.log("development")
-} else {
+const env = process.env.NODE_ENV
+console.log(env)
+if (env === 'production') {
+    console.log("production")
     connectionString = {
     connectionString: process.env.DATABASE_URL,
     ssl: true
     };
 };
+
 const pool = new Pool(connectionString);
+console.log(pool)
 pool.on('connect', () => console.log('connected to db'));
 const data = pool.query('SELECT * FROM germanverbs', (error, results) => {
     if (error) {
@@ -74,5 +69,5 @@ const data = pool.query('SELECT * FROM germanverbs', (error, results) => {
      }
      response.status(200).json(results)
     })
-    
+console.log(data)
 app.get('/', function (req, res) { res.send(data); });
