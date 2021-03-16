@@ -11,7 +11,7 @@ app.use(cors())
 const getVerbs = (request, response) => {
   pool.query('SELECT * FROM germanverbs', (error, results) => {
     if (error) {
-      throw error
+      console.log("error")
     }
     response.status(200).json(results.rows)
   })
