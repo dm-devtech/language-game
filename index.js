@@ -46,11 +46,10 @@ app.get('/db', async (req, res) => {
     }
   })
 
-
 app.route('/verbs').get('/verbs', getVerbs).post('addVerb)
 app.get('/', function (req, res) { res.send('Hello'); });
 
 // Start server
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log(`Server listening`)
 })
