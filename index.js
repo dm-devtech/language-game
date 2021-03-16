@@ -63,6 +63,7 @@ if (env === 'production') {
 const pool = new Pool(connectionString);
 console.log("pool>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", pool)
 pool.on('connect', () => console.log('connected to db'));
+pool.connect
 const data = pool.query('SELECT * FROM germanverbs', (error, results) => {
     if (error) {
        throw error
