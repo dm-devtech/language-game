@@ -44,9 +44,7 @@ app.use(cors())
 // });
 //
 // // Start server
-// app.listen(process.env.PORT || 3002, () => {
-//   console.log(`Server listening`)
-// })
+
 
 const { Pool } = require('pg');
 
@@ -78,3 +76,7 @@ const data = pool.connect((err, client, release) => {
 })
 console.log("data>>>>>>>>>>>>>>>>>>>>>>>", data)
 app.get('/', function (req, res) { res.send(data); });
+
+app.listen(process.env.PORT || 3002, () => {
+  console.log("server listening>>>>>>>>>>", `Server listening`)
+})
