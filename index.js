@@ -32,7 +32,7 @@ const addVerb = (request, response) => {
 }
 
 app.get('/', function (req, res) { res.send('Hello'); });
-app.get("/verbs", getVerbs)
+app.route('/verbs').get(getVerbs).post(addVerb)
 
 // Start server
 app.listen(process.env.PORT || 3002, () => {
