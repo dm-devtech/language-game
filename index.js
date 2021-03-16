@@ -48,9 +48,9 @@ app.get('/db', async (req, res) => {
 
 
 app.route('/verbs').get('/verbs', getVerbs).post('addVerb)
-app.route('/').get('/', function (req, res) { res.send('Hello'); });
+app.get('/', function (req, res) { res.send('Hello'); });
 
 // Start server
-app.listen(process.env.PORT || 3002, () => {
+app.listen(process.env.PORT, () => {
   console.log(`Server listening`)
 })
