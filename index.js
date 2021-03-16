@@ -1,14 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-
-const { Pool } = require('pg');
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
+const {pool} = require('./config')
 
 const app = express()
 
@@ -40,23 +33,16 @@ const addVerb = (request, response) => {
   )
 }
 
-app.get('/db', async (req, res) => {
-    try {
-      const client = await pool.connect();
-      const result = await client.query('SELECT * FROM germanverbs');
-      const results = { 'results': (result) ? result.rows : null};
-      res.render('pages/db', results );
-      client.release();
-    } catch (err) {
-      console.error(err);
-      res.send("Error " + err);
-    }
-  })
+app
+  .route('/verbs')
+  // GET endpoint
+  .get(getVerbs)
+  // POST endpoint
+  .post(addVerb)
 
-app.get('/verbs', getVerbs).post('addVerb)
 app.get('/', function (req, res) { res.send('Hello'); });
 
 // Start server
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 3002, () => {
   console.log(`Server listening`)
 })
