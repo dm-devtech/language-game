@@ -2,6 +2,14 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const {pool} = require('./config')
+const port = process.env.PORT || 3002
+
+pool.connect(function(error){
+  console.log("connected to db");
+  app.listen(port, () => {
+    console.log("listening at port" + port)
+  }))
+})
 
 const app = express()
 
@@ -38,11 +46,6 @@ app.get('/', function (req, res) { res.send('Hello'); });
 app.get('/test', function(req, res) {
   pool.query("SELECT * FROM germanverbs", function(error, result){
     res.json(result);
-    console.log("success")
+    console.log(result)
   });
 });
-
-// Start server
-app.listen(process.env.PORT || 3002, () => {
-  console.log(`Server listening`)
-})
