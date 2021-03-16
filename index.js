@@ -63,12 +63,18 @@ if (env === 'production') {
 const pool = new Pool(connectionString);
 console.log("pool>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", pool)
 pool.on('connect', () => console.log('connection message>>>>>>>>>>>>>>>>>>>>>>>>>>>>', 'connected to db'));
-pool.connect()
-const data = pool.query('SELECT * FROM germanverbs', (error, results) => {
-    if (error) {
-       throw error
-     }
-     response.status(200).json(results)
-    })
+
+const data = pool.connect((err, client, release) => {
+  if (err) {
+    return console.error('Error acquiring client', err.stack)
+  }
+  client.query('SELECT * from germanverbs', (err, result) => {
+    release()
+    if (err) {
+      return console.error('Error executing query', err.stack)
+    }
+    console.log("results rows>>>>>>>>>>>>>>", result.rows)
+  })
+})
 console.log("data>>>>>>>>>>>>>>>>>>>>>>>", data)
 app.get('/', function (req, res) { res.send(data); });
