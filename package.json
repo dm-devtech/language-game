@@ -5,7 +5,7 @@
   "description": "Language Game Api",
   "main": "index.js",
   "engines": {
-    "node": "14.16.0"
+    "node": "15.5.0"
   },
   "scripts": {
     "start": "node index.js",
@@ -14,14 +14,14 @@
     "web": "node index.js"
   },
   "production": {
-  "use_env_variable": "DATABASE_URL",
-  "dialect": "postgres",
-  "dialectOptions": {
-     "ssl": {
-       "require": true
-     }
-   }
- },
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true
+      }
+    }
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
