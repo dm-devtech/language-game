@@ -1,14 +1,14 @@
-// const express = require('express')
+const express = require('express')
 // const bodyParser = require('body-parser')
 // const cors = require('cors')
 // const {pool} = require('./config')
 //
-// const app = express()
-//
-// app.use(express.json())
-// app.use(express.urlencoded({extended: true}))
-// app.use(express.static("public"))
-// app.use(cors())
+const app = express()
+
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+app.use(express.static("public"))
+app.use(cors())
 //
 // const getVerbs = (request, response) => {
 //   pool.query('SELECT * FROM germanverbs', (error, results) => {
