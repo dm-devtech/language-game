@@ -74,8 +74,6 @@ app.use(cors())
 //   console.log("server listening>>>>>>>>>>", `Server listening`)
 // })
 
-
-
 const { Client } = require('pg');
 
 const client = new Client({
@@ -87,12 +85,12 @@ const client = new Client({
 
 client.connect();
 
-app.get('/', function(req, res) {
-  client.query('SELECT * FROM germanverbs', (err, res) => {
-  if (err) throw err;
-  for (let row of res.rows) {
-    console.log(JSON.stringify(row));
-  }
-  client.end();
-  });
+const data = client.query('SELECT * FROM germanverbs', (err, res) => {
+if (err) throw err;
+for (let row of res.rows) {
+  return JSON.stringify(row);
+}
+client.end();
 });
+
+app.get('/', function (req, res) { res.send(data); });
