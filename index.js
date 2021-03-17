@@ -68,8 +68,6 @@ const data = pool.query('SELECT * from germanverbs')
 .catch(err => console.error('Error executing query', err.stack))
 console.log("data>>>>>>>>>>", data)
 
-app.get('/', function (req, res) { res.send(data); });
-
 app.listen(process.env.PORT || 3002, () => {
   console.log("server listening>>>>>>>>>>", `Server listening`)
 })
