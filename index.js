@@ -87,7 +87,6 @@ const client = new Client({
 
 client.connect();
 
-const getVerb = (request, response) => {
   client.query('SELECT * FROM germanverbs', (err, res) => {
   if (err) throw err;
   for (let row of res.rows) {
@@ -95,6 +94,3 @@ const getVerb = (request, response) => {
   }
   client.end();
 });
-}
-
-app.route('/').get(getVerb)
