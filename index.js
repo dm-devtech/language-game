@@ -4,13 +4,13 @@ const cors = require('cors')
 // const {pool} = require('./config')
 //
 // const { Client } = require('pg');
-// const app = express()
+const app = express()
 //
 //
-// app.use(express.json())
-// app.use(express.urlencoded({extended: true}))
-// app.use(express.static("public"))
-// app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+app.use(express.static("public"))
+app.use(cors())
 //
 // const getVerbs = (request, response) => {
 //   pool.query('SELECT * FROM germanverbs', (error, results) => {
@@ -87,10 +87,12 @@ const client = new Client({
 
 client.connect();
 
-client.query('SELECT * FROM germanverbs', (err, res) => {
+const getVerb = client.query('SELECT * FROM germanverbs', (err, res) => {
   if (err) throw err;
   for (let row of res.rows) {
-    console.log(JSON.stringify(row));
+    JSON.stringify(row);
   }
   client.end();
 });
+
+app.route('/').get(getVerb)
