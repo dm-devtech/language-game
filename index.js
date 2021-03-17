@@ -65,7 +65,7 @@ console.log("pool>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", pool)
 
 app.get('/', function (req, res) { res.send(
   pool.query('SELECT * from germanverbs')
-  .then(res => console.log("res rows>>>>>>>>>>", res))
+  .then(res => console.log("res rows>>>>>>>>>>", res.rows))
   .catch(err => console.error('Error executing query', err.stack))); });
 
 app.listen(process.env.PORT || 3002, () => {
