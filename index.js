@@ -87,10 +87,12 @@ const client = new Client({
 
 client.connect();
 
+app.get('/', function(req, res) {
   client.query('SELECT * FROM germanverbs', (err, res) => {
   if (err) throw err;
   for (let row of res.rows) {
     console.log(JSON.stringify(row));
   }
   client.end();
+  });
 });
