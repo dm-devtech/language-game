@@ -91,7 +91,7 @@ const getVerb = (request, response) => {
   client.query('SELECT * FROM germanverbs', (err, res) => {
   if (err) throw err;
   for (let row of res.rows) {
-    JSON.stringify(row);
+    console.log(JSON.stringify(row));
   }
   client.end();
 });
