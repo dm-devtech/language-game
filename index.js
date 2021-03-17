@@ -61,14 +61,12 @@ if (env === 'production') {
 const pool = new Pool(connectionString);
 console.log("pool>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", pool)
 
-pool
-  .query('SELECT * from germanverbs')
-  .then(res => console.log("res rows>>>>>>>>>>", res))
-  .catch(err => console.error('Error executing query', err.stack))
-
 
 console.log("data>>>>>>>>>>>>>>>>>>>>>>>", data)
-app.get('/', function (req, res) { res.send(data); });
+app.get('/', function (req, res) { res.send(pool
+  .query('SELECT * from germanverbs')
+  .then(res => console.log("res rows>>>>>>>>>>", res))
+  .catch(err => console.error('Error executing query', err.stack))); });
 
 app.listen(process.env.PORT || 3002, () => {
   console.log("server listening>>>>>>>>>>", `Server listening`)
