@@ -66,7 +66,7 @@ console.log("pool>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", pool)
 const data = pool.query('SELECT * from germanverbs')
 .then(res => console.log("res rows>>>>>>>", res.rows))
 .catch(err => console.error('Error executing query', err.stack))
-console.log("data>>>>>>>>>>" data)
+console.log("data>>>>>>>>>>", data)
 
 app.get('/', function (req, res) { res.send(data); });
 
