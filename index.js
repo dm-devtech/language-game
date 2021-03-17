@@ -54,9 +54,11 @@ if (env === 'production') {
     console.log("STATUS>>>>>>>>>>>>>", "production")
     connectionString = {
     connectionString: process.env.DATABASE_URL,
-    ssl: rejectUnauthorized: false
+    ssl: {
+      rejectUnauthorized: false
     };
 };
+}
 
 const pool = new Pool(connectionString);
 console.log("pool>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", pool)
