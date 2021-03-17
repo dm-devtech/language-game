@@ -92,7 +92,6 @@ const getVerb = (request, response) => {
   if (err) throw err;
   for (let row of res.rows) {
     JSON.stringify(row);
-    response.status(200).json(results)
   }
   client.end();
 });
