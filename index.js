@@ -61,10 +61,8 @@ if (env === 'production') {
 const pool = new Pool(connectionString);
 console.log("pool>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", pool)
 
-
-console.log("data>>>>>>>>>>>>>>>>>>>>>>>", data)
-app.get('/', function (req, res) { res.send(pool
-  .query('SELECT * from germanverbs')
+app.get('/', function (req, res) { res.send(
+  pool.query('SELECT * from germanverbs')
   .then(res => console.log("res rows>>>>>>>>>>", res))
   .catch(err => console.error('Error executing query', err.stack))); });
 
