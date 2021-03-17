@@ -87,12 +87,15 @@ const client = new Client({
 
 client.connect();
 
-const getVerb = client.query('SELECT * FROM germanverbs', (err, res) => {
+const getVerb = (request, response) => {
+  client.query('SELECT * FROM germanverbs', (err, res) => {
   if (err) throw err;
   for (let row of res.rows) {
     JSON.stringify(row);
+    response.status(200).json(results)
   }
   client.end();
 });
+}
 
 app.route('/').get(getVerb)
