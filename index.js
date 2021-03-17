@@ -3,7 +3,7 @@ const express = require('express')
 const cors = require('cors')
 // const {pool} = require('./config')
 //
-const { Client } = require('pg');
+// const { Client } = require('pg');
 // const app = express()
 //
 //
