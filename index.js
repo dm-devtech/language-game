@@ -63,7 +63,7 @@ console.log("pool>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", pool)
 
 const data = pool
   .query('SELECT * from germanverbs')
-  .then(res => console.log("res rows>>>>>>>>>>", res.rows[0])) // brianc
+  .then(res => console.log("res rows>>>>>>>>>>", res))
   .catch(err => console.error('Error executing query', err.stack))
 
 
