@@ -74,6 +74,14 @@ app.listen(process.env.PORT || 3002, () => {
   console.log("server listening>>>>>>>>>>", `Server listening`)
 })
 
+
+app.get('/', (request, response, next) => {
+ pool.query('SELECT * from germanverbs', (err, res) => {
+  if (err) return next(err);
+  response.json(res.rows);
+ });
+});
+
 // const { Client } = require('pg');
 //
 // const client = new Client({
