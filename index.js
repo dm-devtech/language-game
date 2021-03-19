@@ -80,21 +80,21 @@ app.get('/', function (req, res) { res.send('Language Lighthouse'); });
 app.get('/german', (request, response, next) => {
  pool.query('SELECT * from german', (err, res) => {
   if (err) return next(err);
-  response.json(res);
+  response.json(res.rows);
  });
 });
 
 app.get('/french', (request, response, next) => {
  pool.query('SELECT * from french', (err, res) => {
   if (err) return next(err);
-  response.json(res);
+  response.json(res.rows);
  });
 });
 
 app.get('/latin', (request, response, next) => {
  pool.query('SELECT * from latin', (err, res) => {
   if (err) return next(err);
-  response.json(res);
+  response.json(res.rows);
  });
 });
 
