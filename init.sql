@@ -3,7 +3,7 @@ CREATE TABLE german (ID SERIAL PRIMARY KEY, "eng" VARCHAR(100) NOT NULL, "ger" V
 INSERT INTO german (eng, ger, "word_type", category) VALUES ('To run', 'laufen', 'verb', 'movement');
 
 CREATE TABLE french (ID SERIAL PRIMARY KEY, "eng" VARCHAR(100) NOT NULL, "fre" VARCHAR(100) NOT NULL, "word_type" VARCHAR(100) NOT NULL, "category" VARCHAR(100) NOT NULL);
-INSERT INTO french (eng, fre, "word_type", category) VALUES ('pan', 'die Pfanne', 'noun', 'kitchen');
+INSERT INTO french (eng, fre, "word_type", category) VALUES ('pan', 'la poêle', 'noun', 'kitchen');
 
 CREATE TABLE latin (ID SERIAL PRIMARY KEY, "eng" VARCHAR(100) NOT NULL, "lat" VARCHAR(100) NOT NULL, "word_type" VARCHAR(100) NOT NULL, "category" VARCHAR(100) NOT NULL);
-INSERT INTO latin (eng, fre, "word_type", category) VALUES ('pan', 'die Pfanne', 'noun', 'kitchen');
+INSERT INTO latin (eng, lat, "word_type", category) VALUES ('pan', 'cacabus', 'noun', 'kitchen');

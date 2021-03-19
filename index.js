@@ -88,6 +88,13 @@ app.get('/french', (request, response, next) => {
  });
 });
 
+app.get('/latin', (request, response, next) => {
+ pool.query('SELECT * from latin', (err, res) => {
+  if (err) return next(err);
+  response.json(res.rows);
+ });
+});
+
 // const { Client } = require('pg');
 //
 // const client = new Client({
