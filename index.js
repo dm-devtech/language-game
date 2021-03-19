@@ -1,7 +1,7 @@
 const express = require('express')
 // const bodyParser = require('body-parser')
 const cors = require('cors')
-// const {pool} = require('./config')
+const config = require('./config')
 //
 const { Pool } = require('pg');
 const app = express()
@@ -58,7 +58,10 @@ if (env === 'production') {
         rejectUnauthorized: false
       }
     }
-}
+  }
+    else {
+      connectionString = config
+    }
 
 const pool = new Pool(connectionString);
 console.log("pool>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", pool)
@@ -77,21 +80,21 @@ app.get('/', function (req, res) { res.send('Language Lighthouse'); });
 app.get('/german', (request, response, next) => {
  pool.query('SELECT * from german', (err, res) => {
   if (err) return next(err);
-  response.json(res.rows);
+  response.json(res);
  });
 });
 
 app.get('/french', (request, response, next) => {
  pool.query('SELECT * from french', (err, res) => {
   if (err) return next(err);
-  response.json(res.rows);
+  response.json(res);
  });
 });
 
 app.get('/latin', (request, response, next) => {
  pool.query('SELECT * from latin', (err, res) => {
   if (err) return next(err);
-  response.json(res.rows);
+  response.json(res);
  });
 });
 
