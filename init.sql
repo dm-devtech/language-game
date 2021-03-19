@@ -1,7 +1,9 @@
-CREATE DATABASE languagegame;
-CREATE TABLE germanverbs (ID SERIAL PRIMARY KEY, "verb-en" VARCHAR(100) NOT NULL, "verb-de" VARCHAR(100) NOT NULL);
-INSERT INTO germanverbs (engverb, gerverb) VALUES ('To run', 'laufen');
+CREATE DATABASE languagegame WITH ENCODING 'UTF8';
+CREATE TABLE german (ID SERIAL PRIMARY KEY, "eng" VARCHAR(100) NOT NULL, "ger" VARCHAR(100) NOT NULL, "word_type" VARCHAR(100) NOT NULL, "category" VARCHAR(100) NOT NULL);
+INSERT INTO german (eng, ger, "word_type", category) VALUES ('To run', 'laufen', 'verb', 'movement');
 
+CREATE TABLE french (ID SERIAL PRIMARY KEY, "eng" VARCHAR(100) NOT NULL, "fre" VARCHAR(100) NOT NULL, "word_type" VARCHAR(100) NOT NULL, "category" VARCHAR(100) NOT NULL);
+INSERT INTO french (eng, fre, "word_type", category) VALUES ('pan', 'die Pfanne', 'noun', 'kitchen');
 
-CREATE TABLE germannouns (ID SERIAL PRIMARY KEY, "noun-en" VARCHAR(100) NOT NULL, "noun-de" VARCHAR(100) NOT NULL);
-INSERT INTO germannouns (engnoun, gernoun) VALUES ('pan', 'die Pfanne');
+CREATE TABLE latin (ID SERIAL PRIMARY KEY, "eng" VARCHAR(100) NOT NULL, "lat" VARCHAR(100) NOT NULL, "word_type" VARCHAR(100) NOT NULL, "category" VARCHAR(100) NOT NULL);
+INSERT INTO latin (eng, fre, "word_type", category) VALUES ('pan', 'die Pfanne', 'noun', 'kitchen');

@@ -74,15 +74,15 @@ app.listen(process.env.PORT || 3002, () => {
 
 app.get('/', function (req, res) { res.send('Language Lighthouse'); });
 
-app.get('/gerverbs', (request, response, next) => {
- pool.query('SELECT * from germanverbs', (err, res) => {
+app.get('/german', (request, response, next) => {
+ pool.query('SELECT * from german', (err, res) => {
   if (err) return next(err);
   response.json(res.rows);
  });
 });
 
-app.get('/gernouns', (request, response, next) => {
- pool.query('SELECT * from germannouns', (err, res) => {
+app.get('/french', (request, response, next) => {
+ pool.query('SELECT * from french', (err, res) => {
   if (err) return next(err);
   response.json(res.rows);
  });
