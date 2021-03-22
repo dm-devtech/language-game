@@ -1,6 +1,5 @@
 const express = require('express')
 const cors = require('cors')
-const config = require('./config')
 require('dotenv').config()
 const { Pool } = require('pg');
 const app = express()
@@ -15,7 +14,9 @@ const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_P
 
 const pool = new Pool({
   connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
-  ssl: isProduction,
+  ssl: {
+    rejectUnauthorized: false
+  }
 })
 
 app.get('/', function (req, res) { res.send('Language Lighthouse'); });
