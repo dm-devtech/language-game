@@ -1,78 +1,21 @@
 const express = require('express')
-// const bodyParser = require('body-parser')
 const cors = require('cors')
 const config = require('./config')
-//
+require('dotenv').config()
 const { Pool } = require('pg');
 const app = express()
-//
-//
+
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static("public"))
 app.use(cors())
-//
-// const getVerbs = (request, response) => {
-//   pool.query('SELECT * FROM germanverbs', (error, results) => {
-//     if (error) {
-//       throw error
-//     }
-//     response.status(200).json(results)
-//   })
-// }
-//
-// const addVerb = (request, response) => {
-//   const {engverb, gerverb} = request.body
-//   pool.query(
-//     'INSERT INTO germanverbs (engverb, gerverb) VALUES ($1, $2)',
-//     [engverb, gerverb],
-//     (error) => {
-//       if (error) {
-//         throw error
-//       }
-//       response.status(201).json({status: 'success', message: 'Verb added.'})
-//     },
-//   )
-// }
-//
-// app.route('/verbs').get(getVerbs)
-// app.get('/', function (req, res) { res.send('Hello'); });
-//
-// app.get('/test', function(req, res) {
-//   pool.query("SELECT * FROM germanverbs", function(error, result){
-//     const sth = res.json(result);
-//     console.log(sth)
-//   });
-// });
-//
-// // Start server
-//
-//
-const env = process.env.NODE_ENV
-console.log("ENV>>>>>>>>>>>>", env)
-if (env === 'production') {
-    console.log("STATUS>>>>>>>>>>>>>", "production")
-    connectionString = {
-      connectionString: process.env.DATABASE_URL,
-      ssl: {
-        rejectUnauthorized: false
-      }
-    }
-  }
-    else {
-      connectionString = config
-    }
 
-const pool = new Pool(connectionString);
-console.log("pool>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", pool)
+const isProduction = process.env.NODE_ENV === 'production'
+const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}`
 
-const data = pool.query('SELECT * from germanverbs')
-.then(res => console.log("res rows>>>>>>>", res.rows))
-.catch(err => console.error('Error executing query', err.stack))
-console.log("data>>>>>>>>>>", data)
-
-app.listen(process.env.PORT || 3002, () => {
-  console.log("server listening>>>>>>>>>>", `Server listening`)
+const pool = new Pool({
+  connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
+  ssl: isProduction,
 })
 
 app.get('/', function (req, res) { res.send('Language Lighthouse'); });
@@ -98,22 +41,6 @@ app.get('/latin', (request, response, next) => {
  });
 });
 
-// const { Client } = require('pg');
-//
-// const client = new Client({
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: {
-//     rejectUnauthorized: false
-//   }
-// });
-//
-// client.connect();
-//
-// client.query('SELECT * FROM germanverbs', (err, res) => {
-// if (err) throw err;
-// for (let row of res.rows) {
-//   console.log(JSON.stringify(row))
-//   return JSON.stringify(row);
-// }
-// client.end();
-// });
+app.listen(process.env.PORT || 3002, () => {
+  console.log("server listening>>>>>>>>>>", `Server listening`)
+})
