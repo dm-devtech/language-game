@@ -8,9 +8,9 @@
 - Latin
 
 ##### APIs Created
-- [German](http://language-lighthouse.herokuapp.com/german)
-- [French](http://language-lighthouse.herokuapp.com/french)
-- [Latin](http://language-lighthouse.herokuapp.com/latin)
+- [German](http://language-lighthouse.herokuapp.com/api/german)
+- [French](http://language-lighthouse.herokuapp.com/api/french)
+- [Latin](http://language-lighthouse.herokuapp.com/api/latin)
 
 ##### JSON Data Headers
   - ID (database word id)
