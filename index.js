@@ -14,6 +14,10 @@ const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_P
 
 const pool = new Pool({
   connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
+  ssl: {
+  sslmode: 'require',
+  rejectUnauthorized: false,
+}
 })
 
 app.get('/', function (req, res) { res.send('Language Lighthouse'); });
