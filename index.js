@@ -16,8 +16,6 @@ const pool = new Pool({
   connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
 })
 
-
-
 app.get('/', function (req, res) { res.send('Language Lighthouse'); });
 
 app.get('/german', (request, response, next) => {
@@ -41,6 +39,8 @@ app.get('/latin', (request, response, next) => {
  });
 });
 
-app.listen(process.env.PORT || 3002, () => {
+const server = app.listen(process.env.PORT || 3002, () => {
   console.log("server listening>>>>>>>>>>", `Server listening`)
 })
+
+module.exports = server;
