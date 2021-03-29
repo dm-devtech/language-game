@@ -5,7 +5,8 @@ class Controls extends Component {
   constructor(props) {
     super(props)
       this.state = {
-        words: []
+        wordToMatch: [],
+        allWords: []
     }
   }
 
@@ -13,19 +14,20 @@ class Controls extends Component {
     const url = 'http://language-lighthouse.herokuapp.com/api/german'
     const response = await fetch(url)
     const data = await response.json()
-    this.setState({words: data[0], loading: false})
+    this.setState({allWords: data, loading: false})
+    this.setState({wordToMatch: data[Math.floor(Math.random() * this.state.allWords.length)], loading: false})
   }
 
   render() {
     return (
       <div >
         <h1>Language LightHouse</h1>
-          {this.state.loading || !this.state.words ? (
+          {this.state.loading || !this.state.wordToMatch ? (
             <div>loading...</div>
           ) : (
               <div>
-              English: {this.state.words.eng} <br/>
-              German: {this.state.words.ger}
+              English: {this.state.wordToMatch.eng} <br/>
+              German: {this.state.wordToMatch.ger}
               </div>
           )}
       </div>
