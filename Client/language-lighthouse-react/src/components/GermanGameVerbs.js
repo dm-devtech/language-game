@@ -25,6 +25,7 @@ class Controls extends Component {
     const response = await fetch(url)
     const data = await response.json()
 
+
     const incorrectSelections = this.myRandomInts(2, data.length) // object of two random words that are different to the word
     const correctSelection = Math.floor(Math.random() * data.length) // the random number used to find a random word as basis of turn
     const values = Array.from(incorrectSelections, (v, i) => v-1) // converting object of two incorrect words into an array and zero indexing
@@ -50,34 +51,20 @@ class Controls extends Component {
             <div>loading...</div>
           ) : (
           <div>
-                <div data-testid="eng">english: {this.state.wordToMatch.eng}</div>
-                <div data-testid="ger">german: {this.state.wordToMatch.ger}</div>
+                <div data-testid="eng">English: {this.state.wordToMatch.eng}</div>
+                <div data-testid="ger">German: {this.state.wordToMatch.ger}</div>
                 <br/>
                 Select from the below:
                 <br/>
-                <div>Num match: {this.state.selectionOne.ger}</div>
-                <div>num wrong: {this.state.selectionTwo.ger}</div>
-                <div>num wrong2: {this.state.selectionThree.ger}</div>
+                <div>Option 1: {this.state.selectionOne.ger}</div>
+                <div>Option 2: {this.state.selectionTwo.ger}</div>
+                <div>Option 3: {this.state.selectionThree.ger}</div>
           </div>
           )}
       </div>
     )
   }
 }
-
-// render() {
-//   return (
-//
-//         {this.state.loading || !this.state.allWords ? (
-//           <div>loading...</div>
-//         ) : (
-//             <div data-testid="eng">
-//             info: {this.state.allWords.eng}
-//
-//             </div>
-//           )
-// }
-// }
 
 
 export default Controls
