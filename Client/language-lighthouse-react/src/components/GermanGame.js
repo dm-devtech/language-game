@@ -12,10 +12,19 @@ class Controls extends Component {
     }
   }
 
-  myRandomInts(quantity, max){
+  myRandomInts(quantity, max, correctSelection){
+    const set = new Set()
+    set.add(correctSelection)
+    while(set.size < quantity) {
+      set.add(Math.floor(Math.random() * (max)) + 1)
+    }
+    return set
+  }
+
+  myRandomOrder(quantity, max){
     const set = new Set()
     while(set.size < quantity) {
-      set.add(Math.floor(Math.random() * max) + 1)
+      set.add(Math.floor(Math.random() * (max)) + 1)
     }
     return set
   }
@@ -25,23 +34,38 @@ class Controls extends Component {
     const response = await fetch(url)
     const data = await response.json()
 
-    const cat = "modal" // category
-    const newData = data.filter(function (word) { // filter array by category = modal verbs.  array indexes can then be used 
-    return word.category === cat;
-    });
+    // const cat = "modal" // category
+    // const newData = data.filter(function (word) { // filter array by category = modal verbs.  array indexes can then be used
+    // return word.category === cat;
+    // });
+    // console.log(newData)
 
-    console.log(newData)
+    const apiLength = data.length-1
+    const correctSelection = (Math.floor(Math.random() * (apiLength))) // the random number used to find a random word as basis of turn
 
-    const incorrectSelections = this.myRandomInts(2, data.length) // object of two random words that are different to the word
-    const correctSelection = Math.floor(Math.random() * data.length) // the random number used to find a random word as basis of turn
-    const values = Array.from(incorrectSelections, (v, i) => v-1) // converting object of two incorrect words into an array and zero indexing
-    const allWords = [] // create empty array to push the main word and two incorrect words into
-    allWords.push(correctSelection, values[0], values[1]) // pushing correct word and two incorrect words into this array
-    const randomOrder = this.myRandomInts(3, allWords.length) // generating three random numbers to use to randomise order of allWords
-    const order = Array.from(randomOrder, (v, i) => v-1) // converting order obj to array and zero indexing
-    const randomSelectionOne = allWords[order[0]] // random number for selection 1 using array of allWords and using random order
-    const randomSelectionTwo = allWords[order[1]] // random number for selection 2 using array of allWords and using random order
-    const randomSelectionThree = allWords[order[2]] // random number for selection 3 using array of allWords and using random order
+    const availableSelectionsObj = this.myRandomInts(3, apiLength, correctSelection) // object of selections available
+    const availableSelectionsArr = Array.from(availableSelectionsObj, (v, i) => v) // converting object of available selections into an array and zero indexing
+    console.log("correctSelection")
+    console.log(correctSelection)
+
+    console.log("apiLength", "correctSelection", "availableSelectionsObj", "availableSelectionsArr")
+    console.log(apiLength, correctSelection, availableSelectionsObj, availableSelectionsArr)
+
+    const randomOrderObj = this.myRandomOrder(3, 3) // PROBLEM AREA generating three random numbers to use to randomise order of available selections
+    const orderArr = Array.from(randomOrderObj, (v, i) => v) // converting order obj to array and zero indexing
+
+    console.log("orderArr", "randomOrderObj")
+    console.log(orderArr, randomOrderObj)
+
+    const randomSelectionOne = availableSelectionsArr[orderArr[0]-1] // random number for selection 1 using array of allWords and using random order
+    const randomSelectionTwo = availableSelectionsArr[orderArr[1]-1] // random number for selection 2 using array of allWords and using random order
+    const randomSelectionThree = availableSelectionsArr[orderArr[2]-1] // random number for selection 3 using array of allWords and using random order
+
+    console.log("orderArr[0]", "orderArr[1]", "orderArr[2]")
+    console.log(orderArr[0], orderArr[1], orderArr[2])
+
+    console.log("randomSelectionOne", "randomSelectionTwo", "randomSelectionThree")
+    console.log(randomSelectionOne, randomSelectionTwo, randomSelectionThree)
 
     this.setState({wordToMatch: data[correctSelection], loading: false})
     this.setState({selectionOne: data[randomSelectionOne], loading: false})
@@ -57,14 +81,17 @@ class Controls extends Component {
             <div>loading...</div>
           ) : (
           <div>
+          <>
                 <div data-testid="eng">English: {this.state.wordToMatch.eng}</div>
-                <div data-testid="ger">German: {this.state.wordToMatch.ger}</div>
                 <br/>
                 Select from the below:
                 <br/>
-                <div>Option 1: {this.state.selectionOne.ger}</div>
-                <div>Option 2: {this.state.selectionTwo.ger}</div>
-                <div>Option 3: {this.state.selectionThree.ger}</div>
+                <button>Option 1: {this.state.selectionOne.ger} </button>
+                <br/>
+                <button>Option 2: {this.state.selectionTwo.ger} </button>
+                <br/>
+                <button>Option 3: {this.state.selectionThree.ger} </button>
+            </>
           </div>
           )}
       </div>
