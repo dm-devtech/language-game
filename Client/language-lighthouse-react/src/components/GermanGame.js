@@ -9,8 +9,7 @@ class Controls extends Component {
         selectionOne: [],
         selectionTwo: [],
         selectionThree: [],
-        counter: 0,
-        answer: 0
+        counter: 0
     }
   }
 
@@ -72,7 +71,6 @@ class Controls extends Component {
     this.setState({selectionOne: data[randomSelectionOne], loading: false})
     this.setState({selectionTwo: data[randomSelectionTwo], loading: false})
     this.setState({selectionThree: data[randomSelectionThree], loading: false})
-    this.setState({answer: 0, loading: false})
   }
 
   render() {
