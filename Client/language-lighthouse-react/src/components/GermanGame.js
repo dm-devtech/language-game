@@ -33,7 +33,13 @@ class Controls extends Component {
 
   checkAnswer = e => {
     let id = parseInt(e.target.getAttribute('word_id'))
-    id === this.state.wordToMatch.id ? console.log("correct") : console.log("incorrect")
+    if(id === this.state.wordToMatch.id){
+      console.log("correct")
+      this.setState({counter: this.state.counter + 1})
+      console.log(this.state.counter)
+    } else {
+      console.log("incorrect")
+    }
     // id === this.state.wordToMatch.id ? console.log("correct") : console.log("incorrect")
     // this.setState({counter: this.state.counter + 1})
   }
@@ -88,7 +94,7 @@ class Controls extends Component {
                 <br/>
                 <button onClick={this.checkAnswer} word_id={this.state.selectionThree.id}>Option 3: {this.state.selectionThree.ger} </button>
                 <br/>
-                <button>Submit</button>
+                Score: {this.state.counter}
             </>
           </div>
           )}
