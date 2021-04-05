@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Controls extends Component {
+class GermanGame extends Component {
 
   constructor(props) {
     super(props)
@@ -140,4 +140,4 @@ class Controls extends Component {
 }
 
 
-export default Controls
+export default GermanGame

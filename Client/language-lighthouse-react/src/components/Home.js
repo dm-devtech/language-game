@@ -10,11 +10,11 @@ render(){
         <h3>Select a language</h3>
           <br/>
           <div className="home-buttons">
-            <button><Link to={"/game/german"}>German</Link></button>
+            <button><Link to={"/game/german"}>Deutsch</Link></button>
             <br/>
-            <button><Link to={"/game/french"}>French</Link></button>
+            <button><Link to={"/game/french"}>Francais</Link></button>
             <br/>
-            <button>Latin (Coming Soon)</button>
+            <button><Link to={"/game/latin"}>Lingua Latina</Link></button>
             <br/>
           </div>
       </div>

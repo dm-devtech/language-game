@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class FrenchGame extends Component {
+class LatinGame extends Component {
 
   constructor(props) {
     super(props)
@@ -78,7 +78,7 @@ class FrenchGame extends Component {
 
 
   async componentDidMount() {
-    const url = 'http://language-lighthouse.herokuapp.com/api/french'
+    const url = 'http://language-lighthouse.herokuapp.com/api/latin'
     const response = await fetch(url)
     const data = await response.json()
     this.setState({apiData: data, loading: false}) // setting data to state
@@ -124,11 +124,11 @@ class FrenchGame extends Component {
                 <br/>
                 Select from the below:
                 <br/>
-                <button onClick={this.checkAnswer} word_id={this.state.selectionOne.id}>Option 1: {this.state.selectionOne.fre} </button>
+                <button onClick={this.checkAnswer} word_id={this.state.selectionOne.id}>Option 1: {this.state.selectionOne.lat} </button>
                 <br/>
-                <button onClick={this.checkAnswer} word_id={this.state.selectionTwo.id}>Option 2: {this.state.selectionTwo.fre} </button>
+                <button onClick={this.checkAnswer} word_id={this.state.selectionTwo.id}>Option 2: {this.state.selectionTwo.lat} </button>
                 <br/>
-                <button onClick={this.checkAnswer} word_id={this.state.selectionThree.id}>Option 3: {this.state.selectionThree.fre} </button>
+                <button onClick={this.checkAnswer} word_id={this.state.selectionThree.id}>Option 3: {this.state.selectionThree.lat} </button>
                 <br/>
                 Score: {this.state.counter}
             </>
@@ -140,4 +140,4 @@ class FrenchGame extends Component {
 }
 
 
-export default FrenchGame
+export default LatinGame
