@@ -12,7 +12,7 @@ render(){
           <div className="home-buttons">
             <button><Link to={"/game/german"}>German</Link></button>
             <br/>
-            <button>French (Coming Soon)</button>
+            <button><Link to={"/game/french"}>French</Link></button>
             <br/>
             <button>Latin (Coming Soon)</button>
             <br/>
