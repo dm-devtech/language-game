@@ -43,11 +43,9 @@ class Controls extends Component {
   checkAnswer = e => {
     let id = parseInt(e.target.getAttribute('word_id'))
     if(id === this.state.wordToMatch.id){
-      console.log("correct")
       this.changeWord()
         } else {
       this.setState({answer: "INCORRECT"})
-      console.log("incorrect availableSelectionsObj", this.state.availableSelectionsObj, "availableSelectionsArr", this.state.availableSelectionsArr)
     }
     // id === this.state.wordToMatch.id ? console.log("correct") : console.log("incorrect")
     // this.setState({counter: this.state.counter + 1})
