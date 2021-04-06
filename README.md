@@ -1,6 +1,6 @@
 ### Langue Leuchtturm (Language Lighthouse)
-
 - A game for learning languages
+- [Play the game here!](http://language-lighthouse.herokuapp.com/)
 
 #### Languages:
 - German
@@ -19,13 +19,19 @@
   - wordtype (noun/verb etc)
   - category (kitchen, house, anatomy etc)
   - gender (gender of nouns.  If no gender then n/a)
+  - difficulty (easy/medium/hard)
+  - declension (only for Latin)
 
 #### Tech used
 - Node / Express for building the app routes and APIs
 - Postgres for the database
 - APIs hosted on Heroku
 - Jest for testing
-- React front end (coming soon)
+- React front end
 
 #### Test Coverage
 - Coming Soon
+
+#### Features to be implemented
+- Filtering word types by type, difficulty etc
+- Game to test gender of nouns

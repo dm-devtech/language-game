@@ -124,12 +124,9 @@ class FrenchGame extends Component {
           {this.state.loading || !this.state.wordToMatch ? (
             <div>loading...</div>
           ) : (
-          <div>
           <>
                 <div className="body-text">
                 <div data-testid="eng">English: {this.state.wordToMatch.eng}</div>
-                <br/>
-                Select from the below:
                 <br/>
                 <div className="buttons">
                 <button className="click" onClick={this.checkAnswer} word_id={this.state.selectionOne.id}>{this.state.selectionOne.fre} </button>
@@ -142,7 +139,6 @@ class FrenchGame extends Component {
                 Score: {this.state.counter} {this.state.answer}
                 </div>
             </>
-          </div>
           )}
           <Footer />
       </div>

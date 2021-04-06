@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import home from '../styling/iconfinder_Streamline-18_185038.png'
 
 class Home extends Component {
   render(){
@@ -10,9 +9,12 @@ class Home extends Component {
               Language Lighthouse
               <br/>
               <div className="body-text">
+                (Langue Leuchtturm)
+                <br/>
                 Select a language
-                  <br/><br/><br/>
+                  <br/>
                   <div className="buttons">
+                  <br/>
                     <button className="click"><Link to={"/game/german"}>Deutsch</Link></button>
                       <br/>
                     <button className="click"><Link to={"/game/french"}>Francais</Link></button>
