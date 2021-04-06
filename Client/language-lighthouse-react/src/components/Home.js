@@ -1,24 +1,29 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import home from '../styling/iconfinder_Streamline-18_185038.png'
 
 class Home extends Component {
-render(){
-    return (
-      <div className="header">
-        <h1>Language LightHouse</h1>
-        <h2>Language Learning App</h2>
-        <h3>Select a language</h3>
-          <br/>
-          <div className="home-buttons">
-            <button><Link to={"/game/german"}>Deutsch</Link></button>
-            <br/>
-            <button><Link to={"/game/french"}>Francais</Link></button>
-            <br/>
-            <button><Link to={"/game/latin"}>Lingua Latina</Link></button>
-            <br/>
-          </div>
-      </div>
-    )
+  render(){
+      return (
+        <div>
+            <div className='Header'>
+              Language Lighthouse
+              <br/>
+              <div className="body-text">
+                Select a language
+                  <br/><br/><br/>
+                  <div className="buttons">
+                    <button className="click"><Link to={"/game/german"}>Deutsch</Link></button>
+                      <br/>
+                    <button className="click"><Link to={"/game/french"}>Francais</Link></button>
+                      <br/>
+                    <button className="click"><Link to={"/game/latin"}>Lingua Romanorum</Link></button>
+                      <br/>
+                  </div>
+            </div>
+        </div>
+        </div>
+      )
   }
 }
 

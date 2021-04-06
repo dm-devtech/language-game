@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Footer from '../components/Footer';
 
 class LatinGame extends Component {
 
@@ -43,9 +44,13 @@ class LatinGame extends Component {
   checkAnswer = e => {
     let id = parseInt(e.target.getAttribute('word_id'))
     if(id === this.state.wordToMatch.id){
+      this.setState({answer: "CORRECT"})
       this.changeWord()
         } else {
       this.setState({answer: "INCORRECT"})
+      setTimeout(() => {
+        this.setState({answer: ""})
+      }, 500);
     }
     // id === this.state.wordToMatch.id ? console.log("correct") : console.log("incorrect")
     // this.setState({counter: this.state.counter + 1})
@@ -53,7 +58,9 @@ class LatinGame extends Component {
 
   async changeWord() {
     this.setState({counter: this.state.counter + 1}) // score +1 when answer correct
-    this.setState({answer: "CORRECT"}) // correct message shown during game
+    setTimeout(() => {
+      this.setState({answer: ""})
+    }, 500); // correct message shown during game
 
     const correctSelection = await Math.floor(Math.random() * (this.state.apiLength)) // random number based on api length
     this.setState({correctSelection: correctSelection}) // random number for word index
@@ -112,28 +119,32 @@ class LatinGame extends Component {
   render() {
     return (
       <div>
-        <h1>Language LightHouse</h1>
-          <div>{this.state.answer}</div>
+        <div className="Header">Language Lighthouse</div>
           <br/>
           {this.state.loading || !this.state.wordToMatch ? (
             <div>loading...</div>
           ) : (
           <div>
           <>
+                <div className="body-text">
                 <div data-testid="eng">English: {this.state.wordToMatch.eng}</div>
                 <br/>
                 Select from the below:
                 <br/>
-                <button onClick={this.checkAnswer} word_id={this.state.selectionOne.id}>Option 1: {this.state.selectionOne.lat} </button>
+                <div className="buttons">
+                <button className="click" onClick={this.checkAnswer} word_id={this.state.selectionOne.id}>{this.state.selectionOne.lat} </button>
                 <br/>
-                <button onClick={this.checkAnswer} word_id={this.state.selectionTwo.id}>Option 2: {this.state.selectionTwo.lat} </button>
+                <button className="click" onClick={this.checkAnswer} word_id={this.state.selectionTwo.id}>{this.state.selectionTwo.lat} </button>
                 <br/>
-                <button onClick={this.checkAnswer} word_id={this.state.selectionThree.id}>Option 3: {this.state.selectionThree.lat} </button>
+                <button className="click" onClick={this.checkAnswer} word_id={this.state.selectionThree.id}>{this.state.selectionThree.lat} </button>
                 <br/>
-                Score: {this.state.counter}
+                </div>
+                Score: {this.state.counter} {this.state.answer}
+                </div>
             </>
           </div>
           )}
+          <Footer />
       </div>
     )
   }
