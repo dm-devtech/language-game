@@ -8,7 +8,7 @@ img[alt="home-icon"]{
 }
 
 h2 {
-  margin: 0 auto;
+
   text-align: center;
 }
 
@@ -21,7 +21,7 @@ h3 {
   padding: 0px;
   height: 100%;
   width: 100%;
-  letter-spacing: 5px;
+  letter-spacing: 2px;
   color: darkblue;
   font: 50px Tahoma, sans-serif;
   font-weight: bold;
