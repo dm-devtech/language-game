@@ -7,6 +7,10 @@
 - French
 - Latin
 
+#### Screenshots:
+![Homepage](Screenshots/Homepage.JPG)
+![Game](Screenshots/game.png)
+
 ##### APIs Created
 - [German](http://language-lighthouse.herokuapp.com/api/german)
 - [French](http://language-lighthouse.herokuapp.com/api/french)
