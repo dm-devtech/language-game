@@ -29,9 +29,6 @@
 - Jest for testing
 - React front end
 
-#### Test Coverage
-- Coming Soon
-
 #### Features to be implemented
 - Filtering word types by type, difficulty etc
-- Game to test gender of nouns
+- Game to test gender of nouns and declensions of Latin nouns
