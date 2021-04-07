@@ -16,18 +16,23 @@ class Home extends Component {
               <div className="body-text">
                 (Langue Leuchtturm)
                 <br/>
-                Select a language
+                <br/>
+                Select a language:
                   <br/>
-                  <div className="buttons">
+                  <div>
                   <br/>
-                  <Router>
-                    <button className="click"><Link to={"/game/german"}>Deutsch</Link></button>
+                  <Route>
+                    <button className="button"><Link to={"/game/german"}>Deutsch</Link></button>
+                    </Route>
                       <br/>
-                    <button className="click"><Link to={"/game/french"}>Francais</Link></button>
+                      <Route>
+                    <button className="button"><Link to={"/game/french"}>Francais</Link></button>
+                    </Route>
                       <br/>
-                    <button className="click"><Link to={"/game/latin"}>Lingua Romanorum</Link></button>
+                      <Route>
+                    <button className="button"><Link to={"/game/latin"}>Lingua Romanorum</Link></button>
+                      </Route>
                       <br/>
-                      </Router>
                   </div>
             </div>
         </div>

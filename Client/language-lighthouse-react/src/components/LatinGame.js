@@ -120,27 +120,26 @@ class LatinGame extends Component {
     return (
       <div>
         <div className="Header">Language Lighthouse</div>
-          <br/>
           {this.state.loading || !this.state.wordToMatch ? (
             <div>loading...</div>
           ) : (
           <>
-                <div className="body-text">
-                <div data-testid="eng">English: {this.state.wordToMatch.eng}</div>
+                <div>
+                <div className="body-text" data-testid="eng">English: {this.state.wordToMatch.eng}</div>
                 <br/>
-                <div className="buttons">
-                <button className="click" onClick={this.checkAnswer} word_id={this.state.selectionOne.id}>{this.state.selectionOne.lat} </button>
+                <div >
+                <button className="button" onClick={this.checkAnswer} word_id={this.state.selectionOne.id}>{this.state.selectionOne.lat} </button>
                 <br/>
-                <button className="click" onClick={this.checkAnswer} word_id={this.state.selectionTwo.id}>{this.state.selectionTwo.lat} </button>
+                <button className="button" onClick={this.checkAnswer} word_id={this.state.selectionTwo.id}>{this.state.selectionTwo.lat} </button>
                 <br/>
-                <button className="click" onClick={this.checkAnswer} word_id={this.state.selectionThree.id}>{this.state.selectionThree.lat} </button>
+                <button className="button" onClick={this.checkAnswer} word_id={this.state.selectionThree.id}>{this.state.selectionThree.lat} </button>
                 <br/>
                 </div>
-                Score: {this.state.counter} {this.state.answer}
+                <div className="body-text">Score: {this.state.counter} {this.state.answer}</div>
                 </div>
             </>
           )}
-          <Footer />
+          <div className="body-text"><Footer /></div>
       </div>
     )
   }
