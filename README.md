@@ -9,7 +9,7 @@
 
 #### Screenshots:
 ![Homepage](Screenshots/Homepage.JPG)
-![Game](Screenshots/game.png)
+![Game](Screenshots/game.JPG)
 
 ##### APIs Created
 - [German](http://language-lighthouse.herokuapp.com/api/german)
