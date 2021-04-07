@@ -3,12 +3,6 @@ const supertest = require('supertest')
 const request = supertest(app)
 
 describe('testing the local page', () => {
-  it('Test main page text', async done => {
-    const homeResponse = await request.get('/')
-    expect(homeResponse.text).toContain('Language Lighthouse')
-    done()
-  })
-
   it('Test german dictionary api', async done => {
     const homeResponse = await request.get('/api/german')
     expect(homeResponse.text).toContain('[{"id":1,"eng":"To run","ger":"laufen","wordtype":"verb","category":"movement","gender":"n/a"}]')

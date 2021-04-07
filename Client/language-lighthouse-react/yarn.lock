@@ -962,7 +962,7 @@
     "@babel/helper-create-regexp-features-plugin" "^7.12.13"
     "@babel/helper-plugin-utils" "^7.12.13"
 
-"@babel/preset-env@^7.12.1", "@babel/preset-env@^7.8.4":
+"@babel/preset-env@^7.12.1", "@babel/preset-env@^7.13.12", "@babel/preset-env@^7.8.4":
   "integrity" "sha512-JzElc6jk3Ko6zuZgBtjOd01pf9yYDEIH8BcqVuYIuOkzOwDesoa/Nz4gIo4lBG6K861KTV9TvIgmFuT6ytOaAA=="
   "resolved" "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.13.12.tgz"
   "version" "7.13.12"

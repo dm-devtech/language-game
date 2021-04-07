@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link, BrowserRouter as Router, Route } from "react-router-dom";
 
 class Home extends Component {
 
@@ -20,12 +20,14 @@ class Home extends Component {
                   <br/>
                   <div className="buttons">
                   <br/>
+                  <Router>
                     <button className="click"><Link to={"/game/german"}>Deutsch</Link></button>
                       <br/>
                     <button className="click"><Link to={"/game/french"}>Francais</Link></button>
                       <br/>
                     <button className="click"><Link to={"/game/latin"}>Lingua Romanorum</Link></button>
                       <br/>
+                      </Router>
                   </div>
             </div>
         </div>
