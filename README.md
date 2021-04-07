@@ -8,8 +8,8 @@
 - Latin
 
 #### Screenshots:
-![Homepage](Screenshots/HomePage.JPG)
-![Game](Screenshots/Game.JPG)
+![HomePage](Screenshots/HomePage.JPG)
+![game](Screenshots/Game.JPG)
 
 ##### APIs Created
 - [German](http://language-lighthouse.herokuapp.com/api/german)
