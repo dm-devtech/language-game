@@ -60,17 +60,14 @@ body {
   border-radius: 15px;
   box-shadow: 0 9px #2F6690;
   margin: 10px;
-  text-decoration: none;
 }
 
 .button:hover {
   font: 20px Tahoma, sans-serif;
-  text-decoration: none;
 }
 
 .button:active {
   font: 20px Tahoma, sans-serif;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
-  text-decoration: none;
 }

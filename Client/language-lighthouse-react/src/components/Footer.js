@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link, BrowserRouter as Router, Route} from 'react-router-dom';
+import {Link, Route} from 'react-router-dom';
 import home from '../styling/iconfinder_Streamline-18_185038.png'
 
 export default class Footer extends Component {
