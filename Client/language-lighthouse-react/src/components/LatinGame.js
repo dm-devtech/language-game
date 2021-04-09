@@ -11,22 +11,14 @@ class LatinGame extends Component {
         selectionTwo: [],
         selectionThree: [],
         counter: 0,
-        answer: "",
-        apiLength: 0,
-        correctSelection: 0,
-        availableSelectionsObj: 0,
-        availableSelectionsArr: 0,
-        randomOrderObj: 0,
-        orderArr: 0,
-        randomSelectionOne: 0,
-        randomSelectiontTwo: 0,
-        randomSelectiontThree: 0,
+        answerMsg: "",
+        apiLength: 0
     }
   }
 
-  myRandomInts(quantity, max, correctSelection){
+  myRandomInts(quantity, max, correctWord){
     const set = new Set()
-    set.add(correctSelection)
+    set.add(correctWord)
     while(set.size < quantity) {
       set.add(Math.floor(Math.random() * (max)) + 1)
     }
@@ -44,76 +36,85 @@ class LatinGame extends Component {
   checkAnswer = e => {
     let id = parseInt(e.target.getAttribute('word_id'))
     if(id === this.state.wordToMatch.id){
-      this.setState({answer: "CORRECT"})
-      this.changeWord()
+      this.setState({answerMsg: "CORRECT"})
+      this.nextWord()
         } else {
-      this.setState({answer: "INCORRECT"})
+      this.setState({answerMsg: "INCORRECT"})
       setTimeout(() => {
-        this.setState({answer: ""})
-      }, 500);
+        this.setState({answerMsg: ""})
+      }, 1000);
     }
     // id === this.state.wordToMatch.id ? console.log("correct") : console.log("incorrect")
     // this.setState({counter: this.state.counter + 1})
   }
 
-  async changeWord() {
+  async newRandomWord() {
+    const correctWord = await Math.floor(Math.random() * (this.state.apiLength)) // random number based on api length
+    return correctWord
+  }
+
+  async randomisedOptions(correctWord) {
+    const randomOptions = await Array.from(this.myRandomInts(3, this.state.apiLength, correctWord), (v, i) => v) // random numbers for options
+    return randomOptions
+  }
+
+  async randomisedOrder() {
+    const randomOrder = await Array.from(this.myRandomOrder(3, 3), (v, i) => v)
+    return randomOrder
+  }
+
+  async allocatedOptions(randomOptions, randomOrders) {
+    const randomOptionOne = await randomOptions[randomOrders[0]-1] // randomising order of options
+    const randomOptionTwo = await randomOptions[randomOrders[1]-1] // same as above
+    const randomOptionThree = await randomOptions[randomOrders[2]-1] // same as above
+    let options = [randomOptionOne, randomOptionTwo, randomOptionThree]
+    return options
+  }
+
+  async nextWord() {
     this.setState({counter: this.state.counter + 1}) // score +1 when answer correct
     setTimeout(() => {
-      this.setState({answer: ""})
-    }, 500); // correct message shown during game
+      this.setState({answerMsg: ""})
+    }, 1000); // correct message shown during game
 
-    const correctSelection = await Math.floor(Math.random() * (this.state.apiLength)) // random number based on api length
-    this.setState({correctSelection: correctSelection}) // random number for word index
+    this.setState({apiLength: this.state.dictionary.length-1})
 
-    const newRandomWord = await this.state.apiData[this.state.correctSelection] // using index with api to set word for turn
-    this.setState({wordToMatch: newRandomWord}) // allocating word to state
+    const correctWord = await this.newRandomWord()
+    this.setState({wordToMatch: this.state.dictionary[correctWord]}) // allocating word to state
 
-    const randomArray = await Array.from(this.myRandomInts(3, this.state.apiLength, this.state.correctSelection), (v, i) => v) // random numbers for selections
-    this.setState({availableSelectionsArr: randomArray}) // allocating random numbers to state
+    const randomOptions = await this.randomisedOptions(correctWord)
+    const randomOrders = await this.randomisedOrder() // allocating randomised selection order
+    const [randomOptionOne, randomOptionTwo, randomOptionThree] = await this.allocatedOptions(randomOptions, randomOrders)
 
-    this.setState({orderArr: Array.from(this.myRandomOrder(3, 3), (v, i) => v)}) // allocating randomised selection order to state
-
-    this.setState({randomSelectionOne: this.state.availableSelectionsArr[this.state.orderArr[0]-1]}) // randomising order of selections
-    this.setState({randomSelectionTwo: this.state.availableSelectionsArr[this.state.orderArr[1]-1]}) // same as above
-    this.setState({randomSelectionThree: this.state.availableSelectionsArr[this.state.orderArr[2]-1]}) // same as above
-
-    this.setState({selectionOne: this.state.apiData[this.state.randomSelectionOne]}) // setting selection to state used for buttons
-    this.setState({selectionTwo: this.state.apiData[this.state.randomSelectionTwo]}) // same as above
-    this.setState({selectionThree: this.state.apiData[this.state.randomSelectionThree]}) // same as above
-
+    this.setState({selectionOne: this.state.dictionary[randomOptionOne]}) // setting selection to state used for buttons
+    this.setState({selectionTwo: this.state.dictionary[randomOptionTwo]}) // same as above
+    this.setState({selectionThree: this.state.dictionary[randomOptionThree]}) // same as above
   }
 
 
   async componentDidMount() {
-    const url = 'http://language-lighthouse.herokuapp.com/api/latin'
+    const url = 'http://language-lighthouse.herokuapp.com/api/french'
     const response = await fetch(url)
-    const data = await response.json()
-    this.setState({apiData: data, loading: false}) // setting data to state
+    const dictionary = await response.json()
 
     // const cat = "modal" // category
     // const newData = data.filter(function (word) { // filter array by category = modal verbs.  array indexes can then be used
     // return word.category === cat;
     // });
     // console.log(newData)
+    this.setState({dictionary: dictionary})
+    this.setState({apiLength: dictionary.length-1})
 
-    this.setState({apiLength: data.length-1})
+    const correctWord = await Math.floor(Math.random() * (this.state.apiLength)) // random number based on api length
+    this.setState({wordToMatch: dictionary[correctWord]}) // allocating word to state
 
-    this.setState({correctSelection: Math.floor(Math.random() * (this.state.apiLength)) }) // random number based on api length
-    this.setState({wordToMatch: this.state.apiData[this.state.correctSelection]}) // using index with api to set word for turn
+    const randomOptions = await this.randomisedOptions(correctWord)
+    const randomOrders = await this.randomisedOrder() // allocating randomised selection order
+    const [randomOptionOne, randomOptionTwo, randomOptionThree] = await this.allocatedOptions(randomOptions, randomOrders)
 
-    this.setState({randomArray: Array.from(this.myRandomInts(3, this.state.apiLength, this.state.correctSelection), (v, i) => v)}) // random numbers for selections
-    this.setState({availableSelectionsArr: this.state.randomArray}) // random numbers for selections allocated to available selections
-
-    this.setState({orderArr: Array.from(this.myRandomOrder(3, 3), (v, i) => v)}) // converting order obj to array and zero indexing
-
-    this.setState({randomSelectionOne: this.state.availableSelectionsArr[this.state.orderArr[0]-1]}) // random number for selection 1 using array of allWords and using random order
-    this.setState({randomSelectionTwo: this.state.availableSelectionsArr[this.state.orderArr[1]-1]}) // random number for selection 2 using array of allWords and using random order
-    this.setState({randomSelectionThree: this.state.availableSelectionsArr[this.state.orderArr[2]-1]}) // random number for selection 3 using array of allWords and using random order
-
-    this.setState({selectionOne: this.state.apiData[this.state.randomSelectionOne]}) // using word and random order to alocate selections to buttons
-    this.setState({selectionTwo: this.state.apiData[this.state.randomSelectionTwo]}) // same as above
-    this.setState({selectionThree: this.state.apiData[this.state.randomSelectionThree]}) // same as above
-
+    this.setState({selectionOne: dictionary[randomOptionOne]}) // setting selection to state used for buttons
+    this.setState({selectionTwo: dictionary[randomOptionTwo]}) // same as above
+    this.setState({selectionThree: dictionary[randomOptionThree]}) // same as above
   }
 
   render() {
@@ -125,8 +126,7 @@ class LatinGame extends Component {
           ) : (
           <>
                 <div>
-                <div className="body-text" data-testid="eng">English: {this.state.wordToMatch.eng}</div>
-                <br/>
+                <div className="answer" data-testid="eng">English: {this.state.wordToMatch.eng}</div>
                 <div >
                 <button className="button" onClick={this.checkAnswer} word_id={this.state.selectionOne.id}>{this.state.selectionOne.lat} </button>
                 <br/>
@@ -135,7 +135,7 @@ class LatinGame extends Component {
                 <button className="button" onClick={this.checkAnswer} word_id={this.state.selectionThree.id}>{this.state.selectionThree.lat} </button>
                 <br/>
                 </div>
-                <div className="body-text">Score: {this.state.counter} {this.state.answer}</div>
+                <div className="body-text">Score: {this.state.counter} {this.state.answerMsg}</div>
                 </div>
             </>
           )}
