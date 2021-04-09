@@ -24,7 +24,7 @@ h3 {
   width: 100%;
   letter-spacing: 2px;
   color: #16425B;
-  font: 40px Tahoma, sans-serif;
+  font: 34px Tahoma, sans-serif;
   font-weight: bold;
   text-align: center;
   text-decoration: none;
@@ -35,10 +35,22 @@ h3 {
   width: 100%;
   letter-spacing: 5px;
   color: #2F6690;
-  font: 20px Tahoma, sans-serif;
+  font: 16px Tahoma, sans-serif;
   text-align: center;
-  margin: 10px;
   text-decoration: none;
+  margin-top: 10px;
+}
+
+.answer {
+  height: 100%;
+  width: 100%;
+  letter-spacing: 5px;
+  color: #2F6690;
+  font: 16px Tahoma, sans-serif;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 body {
