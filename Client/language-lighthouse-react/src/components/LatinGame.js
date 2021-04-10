@@ -93,7 +93,7 @@ class LatinGame extends Component {
 
 
   async componentDidMount() {
-    const url = 'http://language-lighthouse.herokuapp.com/api/french'
+    const url = 'http://language-lighthouse.herokuapp.com/api/latin'
     const response = await fetch(url)
     const dictionary = await response.json()
 

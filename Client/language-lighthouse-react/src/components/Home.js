@@ -1,11 +1,52 @@
 import React, { Component } from 'react';
-import { Link, Route } from "react-router-dom";
+import { Redirect } from "react-router";
 
 class Home extends Component {
+  constructor(props) {
+    super(props)
+      this.state = {
+        redirectGerman: false,
+        redirectFrench: false,
+        redirectLatin: false,
+    }
+  }
 
   componentDidMount() {
       document.title = "Language lighthouse";
   }
+
+    redirectHandlerGerman = () => {
+          this.setState({redirectGerman: true})
+          this.renderRedirectGerman();
+      }
+
+    renderRedirectGerman = () => {
+          if (this.state.redirectGerman) {
+              return <Redirect to='/game/german' />
+          }
+      }
+
+    redirectHandlerFrench = () => {
+          this.setState({redirectFrench: true})
+          this.renderRedirectFrench();
+      }
+
+    renderRedirectFrench = () => {
+          if (this.state.redirectFrench) {
+              return <Redirect to='/game/French' />
+          }
+      }
+
+    redirectHandlerLatin = () => {
+          this.setState({redirectLatin: true})
+          this.renderRedirectLatin();
+      }
+
+    renderRedirectLatin = () => {
+          if (this.state.redirectLatin) {
+              return <Redirect to='/game/Latin' />
+          }
+      }
 
   render(){
       return (
@@ -21,17 +62,11 @@ class Home extends Component {
                   <br/>
                   <div>
                   <br/>
-                  <Route>
-                    <button className="button"><Link to={"/game/german"}>Deutsch</Link></button>
-                    </Route>
+                    <button className="button" onClick={this.redirectHandlerGerman}>Deutsch</button>{this.renderRedirectGerman()}
                       <br/>
-                      <Route>
-                    <button className="button"><Link to={"/game/french"}>Francais</Link></button>
-                    </Route>
+                    <button className="button" onClick={this.redirectHandlerFrench}>Français</button>{this.renderRedirectFrench()}
                       <br/>
-                      <Route>
-                    <button className="button"><Link to={"/game/latin"}>Lingua Romanorum</Link></button>
-                      </Route>
+                    <button className="button" onClick={this.redirectHandlerLatin}>Lingua Romanorum</button>{this.renderRedirectLatin()}
                       <br/>
                   </div>
             </div>
