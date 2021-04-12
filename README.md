@@ -30,8 +30,8 @@
 - Node / Express for building the app routes and APIs
 - Postgres for the database
 - APIs hosted on Heroku
-- Jest for testing
-- React front end
+- Jest and the React Testing Library for testing
+- React for the front end
 
 #### Features to be implemented
 - Filtering word types by type, difficulty etc
