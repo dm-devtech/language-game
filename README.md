@@ -1,5 +1,5 @@
 ### Langue Leuchtturm (Language Lighthouse)
-- A game for learning languages
+- A set of dictionary APIs and a game for learning languages built in React
 - [Play the game here!](http://language-lighthouse.herokuapp.com/)
 
 #### Languages:
