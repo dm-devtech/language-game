@@ -32,6 +32,7 @@
 - APIs hosted on Heroku
 - Jest and the React Testing Library for testing
 - React for the front end
+- CSS for styling
 
 #### Features to be implemented
 - Filtering word types by type, difficulty etc
