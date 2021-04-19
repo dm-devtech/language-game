@@ -4,6 +4,7 @@ import './App.css';
 import GermanNouns from './components/GermanNouns.js'
 import FrenchNouns from './components/FrenchNouns.js'
 import LatinNouns from './components/LatinNouns.js'
+import FrenchVerbs from './components/FrenchVerbs.js'
 import Home from './components/Home.js'
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
           </Route>
           <Route exact path="/game/french/nouns">
             <FrenchNouns />
+          </Route>
+          <Route exact path="/game/french/verbs">
+            <FrenchVerbs />
           </Route>
           <Route exact path="/game/latin/nouns">
             <LatinNouns />

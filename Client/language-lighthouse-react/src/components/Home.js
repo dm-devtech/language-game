@@ -7,6 +7,7 @@ class Home extends Component {
       this.state = {
         redirectGerman: false,
         redirectFrench: false,
+        redirectFrenchVerbs: false,
         redirectLatin: false,
     }
   }
@@ -33,9 +34,21 @@ class Home extends Component {
 
   renderRedirectFrench = () => {
     if (this.state.redirectFrench) {
-      return <Redirect to='/game/french/founs' />
+      return <Redirect to='/game/french/nouns' />
     }
   }
+
+  redirectHandlerFrenchVerbs = () => {
+    this.setState({redirectFrenchVerbs: true})
+    this.renderRedirectFrenchVerbs();
+  }
+
+  renderRedirectFrenchVerbs = () => {
+    if (this.state.redirectFrenchVerbs) {
+      return <Redirect to='/game/french/verbs' />
+    }
+  }
+
 
   redirectHandlerLatin = () => {
     this.setState({redirectLatin: true})
@@ -65,6 +78,8 @@ class Home extends Component {
                                 <br/>
                               <button className="button" onClick={this.redirectHandlerFrench}>Français (Nouns)</button>{this.renderRedirectFrench()}
                                 <br/>
+                                <button className="button" onClick={this.redirectHandlerFrenchVerbs}>Français (Verbs)</button>{this.renderRedirectFrenchVerbs()}
+                                  <br/>
                               <button className="button" onClick={this.redirectHandlerLatin}>Lingua Romanorum (Nouns)</button>{this.renderRedirectLatin()}
                                 <br/>
                           </div>
