@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
-import GermanGame from './components/GermanGame.js'
-import FrenchGame from './components/FrenchGame.js'
-import LatinGame from './components/LatinGame.js'
+import GermanNouns from './components/GermanNouns.js'
+import FrenchNouns from './components/FrenchNouns.js'
+import LatinNouns from './components/LatinNouns.js'
 import Home from './components/Home.js'
 
 function App() {
@@ -13,14 +13,14 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/game/german">
-            <GermanGame />
+          <Route exact path="/game/german/nouns">
+            <GermanNouns />
           </Route>
-          <Route exact path="/game/french">
-            <FrenchGame />
+          <Route exact path="/game/french/nouns">
+            <FrenchNouns />
           </Route>
-          <Route exact path="/game/latin">
-            <LatinGame />
+          <Route exact path="/game/latin/nouns">
+            <LatinNouns />
           </Route>
         </Router>
       </div>

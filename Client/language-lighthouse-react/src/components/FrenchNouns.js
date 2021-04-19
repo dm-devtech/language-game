@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Footer from '../components/Footer';
 
-class LatinGame extends Component {
+class FrenchNouns extends Component {
 
   constructor(props) {
     super(props)
@@ -13,7 +13,7 @@ class LatinGame extends Component {
         counter: 0,
         answerMsg: "",
         apiLength: 0
-    }
+      }
   }
 
   myRandomInts(quantity, max, correctWord){
@@ -38,7 +38,7 @@ class LatinGame extends Component {
     if(id === this.state.wordToMatch.id){
       this.setState({answerMsg: "CORRECT"})
       this.nextWord()
-        } else {
+    } else {
       this.setState({answerMsg: "INCORRECT"})
       setTimeout(() => {
         this.setState({answerMsg: ""})
@@ -93,16 +93,17 @@ class LatinGame extends Component {
 
 
   async componentDidMount() {
-    const url = 'http://language-lighthouse.herokuapp.com/api/latin'
+    const url = 'http://language-lighthouse.herokuapp.com/api/french'
     const response = await fetch(url)
     const dictionary = await response.json()
 
-    // const cat = "modal" // category
-    // const newData = data.filter(function (word) { // filter array by category = modal verbs.  array indexes can then be used
-    // return word.category === cat;
-    // });
-    // console.log(newData)
-    this.setState({dictionary: dictionary})
+    const filteredDictionary = dictionary.filter(function (word) {
+    return word.wordtype === 'noun';
+    })
+
+    console.log(filteredDictionary)
+
+    this.setState({dictionary: filteredDictionary})
     this.setState({apiLength: dictionary.length-1})
 
     const correctWord = await Math.floor(Math.random() * (this.state.apiLength)) // random number based on api length
@@ -124,26 +125,26 @@ class LatinGame extends Component {
           {this.state.loading || !this.state.wordToMatch ? (
             <div>loading...</div>
           ) : (
-          <>
-                <div>
+            <>
+              <div>
                 <div className="answer" data-testid="eng">English: {this.state.wordToMatch.eng}</div>
-                <div >
-                <button className="button" onClick={this.checkAnswer} word_id={this.state.selectionOne.id}>{this.state.selectionOne.lat} </button>
-                <br/>
-                <button className="button" onClick={this.checkAnswer} word_id={this.state.selectionTwo.id}>{this.state.selectionTwo.lat} </button>
-                <br/>
-                <button className="button" onClick={this.checkAnswer} word_id={this.state.selectionThree.id}>{this.state.selectionThree.lat} </button>
-                <br/>
-                </div>
-                <div className="body-text">Score: {this.state.counter} {this.state.answerMsg}</div>
+                  <div>
+                    <button className="button" onClick={this.checkAnswer} word_id={this.state.selectionOne.id}>{this.state.selectionOne.fre} </button>
+                      <br/>
+                    <button className="button" onClick={this.checkAnswer} word_id={this.state.selectionTwo.id}>{this.state.selectionTwo.fre} </button>
+                      <br/>
+                    <button className="button" onClick={this.checkAnswer} word_id={this.state.selectionThree.id}>{this.state.selectionThree.fre} </button>
+                      <br/>
+                  </div>
+                    <div className="body-text">Score: {this.state.counter} {this.state.answerMsg}</div>
                 </div>
             </>
           )}
-          <div className="body-text"><Footer /></div>
+            <div className="body-text"><Footer /></div>
       </div>
     )
   }
 }
 
 
-export default LatinGame
+export default FrenchNouns
