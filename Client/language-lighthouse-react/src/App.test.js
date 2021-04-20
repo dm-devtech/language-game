@@ -1,9 +1,13 @@
 import App from './App';
-import { fireEvent, cleanup, waitFor, screen, render } from '@testing-library/react';
+import { act, fireEvent, cleanup, waitFor, render } from '@testing-library/react';
+import { screen } from '@testing-library/dom';
 import Home from "./components/Home.js"
-import GermanGame from "./components/GermanGame.js"
-import FrenchGame from "./components/FrenchGame.js"
-import LatinGame from "./components/LatinGame.js"
+import GermanNouns from "./components/GermanNouns.js"
+import FrenchNouns from "./components/FrenchNouns.js"
+import LatinNouns from "./components/LatinNouns.js"
+import GermanVerbs from "./components/GermanVerbs.js"
+import FrenchVerbs from "./components/FrenchVerbs.js"
+import LatinVerbs from "./components/LatinVerbs.js"
 import Footer from "./components/Footer.js"
 
 let container = null
@@ -30,30 +34,60 @@ describe('Homepage', () => {
       expect(homeDisplay.queryAllByText(/(Select a language)/))
    })
 
-   it('testing German button', () => {
+   it('testing German Nouns button', () => {
      const clickButton = jest.fn();
-     const { getByText } = render(<Home Deutsch={clickButton} />);
-     const germanButton = getByText(/Deutsch/i)
+     const { getByTestId } = render(<Home Deutsch={clickButton} />);
+     const germanButton = getByTestId('nouns-de')
      fireEvent.click(germanButton);
      waitFor(() => {
        expect(clickButton).toHaveBeenCalled();
      });
    });
 
-   it('testing French button', () => {
+   it('testing French Nouns button', () => {
      const clickButton = jest.fn();
-     const { getByText } = render(<Home Francais={clickButton} />);
-     const frenchButton = getByText(/Francais/i)
+     const { getByTestId } = render(<Home Francais={clickButton} />);
+     const frenchButton = getByTestId('nouns-fr')
      fireEvent.click(frenchButton);
      waitFor(() => {
        expect(clickButton).toHaveBeenCalled();
      });
    });
 
-   it('testing Latin button', () => {
+   it('testing Latin Nouns button', () => {
      const clickButton = jest.fn();
-     const { getByText } = render(<Home Latin={clickButton} />);
-     const latinButton = getByText(/Lingua Romanorum/i)
+     const { getByTestId } = render(<Home Latin={clickButton} />);
+     const latinButton = getByTestId('nouns-la')
+     fireEvent.click(latinButton);
+     waitFor(() => {
+       expect(clickButton).toHaveBeenCalled();
+     });
+   });
+
+   it('testing German verbs button', () => {
+     const clickButton = jest.fn();
+     const { getByTestId } = render(<Home Deutsch={clickButton} />);
+     const germanButton = getByTestId('verbs-de')
+     fireEvent.click(germanButton);
+     waitFor(() => {
+       expect(clickButton).toHaveBeenCalled();
+     });
+   });
+
+   it('testing French verbs button', () => {
+     const clickButton = jest.fn();
+     const { getByTestId } = render(<Home Francais={clickButton} />);
+     const frenchButton = getByTestId('verbs-fr')
+     fireEvent.click(frenchButton);
+     waitFor(() => {
+       expect(clickButton).toHaveBeenCalled();
+     });
+   });
+
+   it('testing Latin verbs button', () => {
+     const clickButton = jest.fn();
+     const { getByTestId } = render(<Home Latin={clickButton} />);
+     const latinButton = getByTestId('verbs-la')
      fireEvent.click(latinButton);
      waitFor(() => {
        expect(clickButton).toHaveBeenCalled();
@@ -73,27 +107,54 @@ describe('footer', () => {
   });
 })
 
-describe('German page', () => {
+describe('German Nouns page', () => {
    it('instructions and score are shown', () => {
-      const homeDisplay = render(<GermanGame />)
+      const homeDisplay = render(<GermanNouns />)
       expect(homeDisplay.queryAllByText(/Language LightHouse/))
       expect(homeDisplay.queryAllByText(/(English:)/))
       expect(homeDisplay.queryAllByText(/(Score:)/))
    })
 })
 
-describe('French page', () => {
+describe('French Nouns page', () => {
    it('instructions and score are shown', () => {
-      const homeDisplay = render(<FrenchGame />)
+      const homeDisplay = render(<FrenchNouns />)
       expect(homeDisplay.queryAllByText(/Language LightHouse/))
       expect(homeDisplay.queryAllByText(/(English:)/))
       expect(homeDisplay.queryAllByText(/(Score:)/))
    })
 })
 
-describe('Latin page', () => {
+describe('Latin Nouns page', () => {
    it('instructions and score are shown', () => {
-      const homeDisplay = render(<LatinGame />)
+      const homeDisplay = render(<LatinNouns />)
+      expect(homeDisplay.queryAllByText(/Language LightHouse/))
+      expect(homeDisplay.queryAllByText(/(English:)/))
+      expect(homeDisplay.queryAllByText(/(Score:)/))
+   })
+})
+
+describe('German Verbs page', () => {
+   it('instructions and score are shown', () => {
+      const homeDisplay = render(<GermanVerbs />)
+      expect(homeDisplay.queryAllByText(/Language LightHouse/))
+      expect(homeDisplay.queryAllByText(/(English:)/))
+      expect(homeDisplay.queryAllByText(/(Score:)/))
+   })
+})
+
+describe('French Verbs page', () => {
+   it('instructions and score are shown', () => {
+      const homeDisplay = render(<FrenchVerbs />)
+      expect(homeDisplay.queryAllByText(/Language LightHouse/))
+      expect(homeDisplay.queryAllByText(/(English:)/))
+      expect(homeDisplay.queryAllByText(/(Score:)/))
+   })
+})
+
+describe('Latin Verbs page', () => {
+   it('instructions and score are shown', () => {
+      const homeDisplay = render(<LatinVerbs />)
       expect(homeDisplay.queryAllByText(/Language LightHouse/))
       expect(homeDisplay.queryAllByText(/(English:)/))
       expect(homeDisplay.queryAllByText(/(Score:)/))
@@ -115,14 +176,14 @@ describe('Latin page', () => {
 //
 //     jest.spyOn(global, 'fetch').mockResolvedValue({ json: jest.fn().mockResolvedValue({ fakeWord }) });
 //
-//  use asynchronous version of act to apply resolved Promise
+//  //use asynchronous version of act to apply resolved Promise
 //  await act(async () => {
-//    render(<Controls />, container)
+//    render(<GermanNouns />)
 //    const test = await screen.queryByTestId('eng')
 //  })
-
+//
 //  expect(await screen.queryByTestId('eng').textContent).toBe("english:")
 //  expect(await screen.queryByTestId('ger').textContent).toBe("german:")
-// global.fetch.mockRestore();
+//  global.fetch.mockRestore();
 //  })
 // })

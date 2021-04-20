@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router";
+import { BrowserRouter as Router } from "react-router-dom";
 
 class Home extends Component {
   constructor(props) {
@@ -86,6 +87,7 @@ class Home extends Component {
 
   render(){
     return (
+      <Router>
       <div>
           <div className='Header'>
             Language Lighthouse
@@ -96,23 +98,23 @@ class Home extends Component {
                   Select a language:
                 <br/>
                   <div className="german">
-                  <button className="button" onClick={this.redirectHandlerGerman}>Deutsch (Nouns)</button>{this.renderRedirectGerman()}
-                  <button className="button" onClick={this.redirectHandlerGermanVerbs}>Deutsch (Verbs)</button>{this.renderRedirectGermanVerbs()}
+                  <button data-testid="nouns-de" className="button" onClick={this.redirectHandlerGerman}>Deutsch (Nouns)</button>{this.renderRedirectGerman()}
+                  <button data-testid="verbs-de" className="button" onClick={this.redirectHandlerGermanVerbs}>Deutsch (Verbs)</button>{this.renderRedirectGermanVerbs()}
                   </div>
                     <div className="french">
-                    <button className="button" onClick={this.redirectHandlerFrench}>Français (Nouns)</button>{this.renderRedirectFrench()}
-                    <button className="button" onClick={this.redirectHandlerFrenchVerbs}>Français (Verbs)</button>{this.renderRedirectFrenchVerbs()}
+                    <button data-testid="nouns-fr" className="button" onClick={this.redirectHandlerFrench}>Français (Nouns)</button>{this.renderRedirectFrench()}
+                    <button data-testid="verbs-fr" className="button" onClick={this.redirectHandlerFrenchVerbs}>Français (Verbs)</button>{this.renderRedirectFrenchVerbs()}
                     </div>
                       <div className="latin">
-                      <button className="button" onClick={this.redirectHandlerLatin}>Lingua Romanorum (Nouns)</button>{this.renderRedirectLatin()}
-                      <button className="button" onClick={this.redirectHandlerLatinVerbs}>Lingua Romanorum (Verbs)</button>{this.renderRedirectLatinVerbs()}
+                      <button data-testid="nouns-la" className="button" onClick={this.redirectHandlerLatin}>Lingua Romanorum (Nouns)</button>{this.renderRedirectLatin()}
+                      <button data-testid="verbs-la" className="button" onClick={this.redirectHandlerLatinVerbs}>Lingua Romanorum (Verbs)</button>{this.renderRedirectLatinVerbs()}
                       </div>
                     </div>
                 </div>
           </div>
+          </Router>
     )
   }
-
 }
 
 export default Home
