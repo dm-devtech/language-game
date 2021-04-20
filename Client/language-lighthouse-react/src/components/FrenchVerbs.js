@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Footer from '../components/Footer';
 
 class FrenchVerbs extends Component {
 
@@ -95,9 +94,9 @@ class FrenchVerbs extends Component {
   async componentDidMount() {
     const url = 'http://language-lighthouse.herokuapp.com/api/french'
     const response = await fetch(url)
-    const dictionary = await response.json()
+    const data = await response.json()
 
-    const filteredDictionary = await dictionary.filter(function (word) {
+    const filteredDictionary = await data.filter(function (word) {
       return word.wordtype === 'verb';
     })
 
@@ -138,7 +137,6 @@ class FrenchVerbs extends Component {
                 </div>
             </>
           )}
-            <div className="body-text"><Footer /></div>
       </div>
     )
   }

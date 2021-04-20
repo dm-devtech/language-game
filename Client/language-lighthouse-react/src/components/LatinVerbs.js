@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Footer from '../components/Footer';
 
 class LatinVerbs extends Component {
 
@@ -95,9 +94,9 @@ class LatinVerbs extends Component {
   async componentDidMount() {
     const url = 'http://language-lighthouse.herokuapp.com/api/latin'
     const response = await fetch(url)
-    const dictionary = await response.json()
+    const data = await response.json()
 
-    const filteredDictionary = await dictionary.filter(function (word) {
+    const filteredDictionary = await data.filter(function (word) {
       return word.wordtype === 'verb' })
 
     this.setState({dictionary: filteredDictionary})
@@ -137,7 +136,6 @@ class LatinVerbs extends Component {
                 </div>
             </>
           )}
-            <div className="body-text"><Footer /></div>
       </div>
     )
   }

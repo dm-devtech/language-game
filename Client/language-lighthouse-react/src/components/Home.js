@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from "react-router";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class Home extends Component {
   constructor(props) {
@@ -87,7 +86,6 @@ class Home extends Component {
 
   render(){
     return (
-      <Router>
       <div>
           <div className='Header'>
             Language Lighthouse
@@ -112,7 +110,6 @@ class Home extends Component {
                     </div>
                 </div>
           </div>
-          </Router>
     )
   }
 }

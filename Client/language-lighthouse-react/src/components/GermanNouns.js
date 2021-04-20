@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Footer from '../components/Footer';
 
 class GermanNouns extends Component {
 
@@ -95,27 +94,29 @@ class GermanNouns extends Component {
   async componentDidMount() {
     const url = 'http://language-lighthouse.herokuapp.com/api/german'
     const response = await fetch(url)
-    const dictionary = await response.json()
+    const data = await response.json()
 
-    const filteredDictionary = dictionary.filter(function (word) {
-    return word.wordtype === 'noun';
+    const filteredDictionary = data.filter(function (word) {
+      return word.wordtype === 'noun';
     })
+
+    this.setState({dictionary: filteredDictionary})
+    this.setState({apiLength: this.state.dictionary.length-1})
 
     console.log(filteredDictionary)
 
-    this.setState({dictionary: filteredDictionary})
-    this.setState({apiLength: dictionary.length-1})
+    const correctWord = await Math.floor(Math.random() * this.state.apiLength) // random number based on api length
+    this.setState({wordToMatch: this.state.dictionary[correctWord]}) // allocating word to state
 
-    const correctWord = await Math.floor(Math.random() * (this.state.apiLength)) // random number based on api length
-    this.setState({wordToMatch: dictionary[correctWord]}) // allocating word to state
+    console.log(this.state.apiLength, this.state.wordToMatch)
 
     const randomOptions = await this.randomisedOptions(correctWord)
     const randomOrders = await this.randomisedOrder() // allocating randomised selection order
     const [randomOptionOne, randomOptionTwo, randomOptionThree] = await this.allocatedOptions(randomOptions, randomOrders)
 
-    this.setState({selectionOne: dictionary[randomOptionOne]}) // setting selection to state used for buttons
-    this.setState({selectionTwo: dictionary[randomOptionTwo]}) // same as above
-    this.setState({selectionThree: dictionary[randomOptionThree]}) // same as above
+    this.setState({selectionOne: this.state.dictionary[randomOptionOne]}) // setting selection to state used for buttons
+    this.setState({selectionTwo: this.state.dictionary[randomOptionTwo]}) // same as above
+    this.setState({selectionThree: this.state.dictionary[randomOptionThree]}) // same as above
   }
 
   render() {
@@ -140,7 +141,6 @@ class GermanNouns extends Component {
                 </div>
             </>
           )}
-            <div className="body-text"><Footer /></div>
       </div>
     )
   }
