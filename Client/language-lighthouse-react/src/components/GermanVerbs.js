@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Footer from '../components/Footer';
 
-class FrenchVerbs extends Component {
+class GermanVerbs extends Component {
 
   constructor(props) {
     super(props)
@@ -93,7 +93,7 @@ class FrenchVerbs extends Component {
 
 
   async componentDidMount() {
-    const url = 'http://language-lighthouse.herokuapp.com/api/french'
+    const url = 'http://language-lighthouse.herokuapp.com/api/german'
     const response = await fetch(url)
     const dictionary = await response.json()
 
@@ -127,11 +127,11 @@ class FrenchVerbs extends Component {
               <div>
                 <div className="answer" data-testid="eng">English: {this.state.wordToMatch.eng}</div>
                   <div>
-                    <button className="button" onClick={this.checkAnswer} word_id={this.state.selectionOne.id}>{this.state.selectionOne.fre} </button>
+                    <button className="button" onClick={this.checkAnswer} word_id={this.state.selectionOne.id}>{this.state.selectionOne.ger} </button>
                       <br/>
-                    <button className="button" onClick={this.checkAnswer} word_id={this.state.selectionTwo.id}>{this.state.selectionTwo.fre} </button>
+                    <button className="button" onClick={this.checkAnswer} word_id={this.state.selectionTwo.id}>{this.state.selectionTwo.ger} </button>
                       <br/>
-                    <button className="button" onClick={this.checkAnswer} word_id={this.state.selectionThree.id}>{this.state.selectionThree.fre} </button>
+                    <button className="button" onClick={this.checkAnswer} word_id={this.state.selectionThree.id}>{this.state.selectionThree.ger} </button>
                       <br/>
                   </div>
                     <div className="body-text">Score: {this.state.counter} {this.state.answerMsg}</div>
@@ -145,4 +145,4 @@ class FrenchVerbs extends Component {
 }
 
 
-export default FrenchVerbs
+export default GermanVerbs

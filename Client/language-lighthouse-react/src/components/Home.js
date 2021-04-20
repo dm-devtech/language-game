@@ -6,9 +6,11 @@ class Home extends Component {
     super(props)
       this.state = {
         redirectGerman: false,
+        redirectGermanVerbs: false,
         redirectFrench: false,
         redirectFrenchVerbs: false,
         redirectLatin: false,
+        redirectLatinVerbs: false
     }
   }
 
@@ -24,6 +26,17 @@ class Home extends Component {
   renderRedirectGerman = () => {
     if (this.state.redirectGerman) {
       return <Redirect to='/game/german/nouns' />
+    }
+  }
+
+  redirectHandlerGermanVerbs = () => {
+    this.setState({redirectGermanVerbs: true})
+    this.renderRedirectGermanVerbs();
+  }
+
+  renderRedirectGermanVerbs = () => {
+    if (this.state.redirectGermanVerbs) {
+      return <Redirect to='/game/german/verbs' />
     }
   }
 
@@ -49,7 +62,6 @@ class Home extends Component {
     }
   }
 
-
   redirectHandlerLatin = () => {
     this.setState({redirectLatin: true})
     this.renderRedirectLatin();
@@ -61,6 +73,17 @@ class Home extends Component {
     }
   }
 
+  redirectHandlerLatinVerbs = () => {
+    this.setState({redirectLatinVerbs: true})
+    this.renderRedirectLatinVerbs();
+  }
+
+  renderRedirectLatinVerbs = () => {
+    if (this.state.redirectLatinVerbs) {
+      return <Redirect to='/game/latin/verbs' />
+    }
+  }
+
   render(){
     return (
       <div>
@@ -68,24 +91,25 @@ class Home extends Component {
             Language Lighthouse
               <br/>
                 <div className="body-text">(Langue Leuchtturm)
-                  <br/>
-                    <br/>
-                      Select a language:
-                        <br/>
-                          <div>
-                            <br/>
-                              <button className="button" onClick={this.redirectHandlerGerman}>Deutsch (Nouns)</button>{this.renderRedirectGerman()}
-                                <br/>
-                              <button className="button" onClick={this.redirectHandlerFrench}>Français (Nouns)</button>{this.renderRedirectFrench()}
-                                <br/>
-                                <button className="button" onClick={this.redirectHandlerFrenchVerbs}>Français (Verbs)</button>{this.renderRedirectFrenchVerbs()}
-                                  <br/>
-                              <button className="button" onClick={this.redirectHandlerLatin}>Lingua Romanorum (Nouns)</button>{this.renderRedirectLatin()}
-                                <br/>
-                          </div>
+                <br/>
+                <br/>
+                  Select a language:
+                <br/>
+                  <div className="german">
+                  <button className="button" onClick={this.redirectHandlerGerman}>Deutsch (Nouns)</button>{this.renderRedirectGerman()}
+                  <button className="button" onClick={this.redirectHandlerGermanVerbs}>Deutsch (Verbs)</button>{this.renderRedirectGermanVerbs()}
+                  </div>
+                    <div className="french">
+                    <button className="button" onClick={this.redirectHandlerFrench}>Français (Nouns)</button>{this.renderRedirectFrench()}
+                    <button className="button" onClick={this.redirectHandlerFrenchVerbs}>Français (Verbs)</button>{this.renderRedirectFrenchVerbs()}
+                    </div>
+                      <div className="latin">
+                      <button className="button" onClick={this.redirectHandlerLatin}>Lingua Romanorum (Nouns)</button>{this.renderRedirectLatin()}
+                      <button className="button" onClick={this.redirectHandlerLatinVerbs}>Lingua Romanorum (Verbs)</button>{this.renderRedirectLatinVerbs()}
+                      </div>
+                    </div>
                 </div>
           </div>
-      </div>
     )
   }
 

@@ -60,26 +60,46 @@ body {
   text-decoration: none;
 }
 
+.german {
+  display:flex;
+  flex-direction:row;
+  justify-content: center;
+}
+
+.french {
+  display:flex;
+  align-items: center;
+  flex-direction:row;
+   justify-content: center;
+}
+
+.latin {
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+   justify-content: center;
+}
+
 .button {
-  font: 20px Tahoma, sans-serif;
-  padding: 15px 25px;
+  font: 16px Tahoma, sans-serif;
+  padding: 18px 18px;
   text-align: center;
   cursor: pointer;
   outline: none;
   color: #2F6690;
   background-color: #81C3D7;
   border: none;
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 0 9px #2F6690;
-  margin: 10px;
+  margin: 15px;
 }
 
 .button:hover {
-  font: 20px Tahoma, sans-serif;
+  font: 16px Tahoma, sans-serif;
 }
 
 .button:active {
-  font: 20px Tahoma, sans-serif;
+  font: 16px Tahoma, sans-serif;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
