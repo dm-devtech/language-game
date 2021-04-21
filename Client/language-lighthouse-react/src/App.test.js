@@ -1,5 +1,6 @@
 import App from './App';
 import { act, fireEvent, cleanup, waitFor, render } from '@testing-library/react';
+import { BrowserRouter } from "react-router-dom";
 import { screen } from '@testing-library/dom';
 import Home from "./components/Home.js"
 import GermanNouns from "./components/GermanNouns.js"
@@ -36,7 +37,7 @@ describe('Homepage', () => {
 
    it('testing German Nouns button', () => {
      const clickButton = jest.fn();
-     const { getByTestId } = render(<Home Deutsch={clickButton} />);
+     const { getByTestId } = render(<Home Deutsch={clickButton} />, { wrapper: BrowserRouter });
      const germanButton = getByTestId('nouns-de')
      fireEvent.click(germanButton);
      waitFor(() => {
@@ -46,7 +47,7 @@ describe('Homepage', () => {
 
    it('testing French Nouns button', () => {
      const clickButton = jest.fn();
-     const { getByTestId } = render(<Home Francais={clickButton} />);
+     const { getByTestId } = render(<Home Francais={clickButton} />, { wrapper: BrowserRouter });
      const frenchButton = getByTestId('nouns-fr')
      fireEvent.click(frenchButton);
      waitFor(() => {
@@ -56,7 +57,7 @@ describe('Homepage', () => {
 
    it('testing Latin Nouns button', () => {
      const clickButton = jest.fn();
-     const { getByTestId } = render(<Home Latin={clickButton} />);
+     const { getByTestId } = render(<Home Latin={clickButton} />, { wrapper: BrowserRouter });
      const latinButton = getByTestId('nouns-la')
      fireEvent.click(latinButton);
      waitFor(() => {
@@ -66,7 +67,7 @@ describe('Homepage', () => {
 
    it('testing German verbs button', () => {
      const clickButton = jest.fn();
-     const { getByTestId } = render(<Home Deutsch={clickButton} />);
+     const { getByTestId } = render(<Home Deutsch={clickButton} />, { wrapper: BrowserRouter });
      const germanButton = getByTestId('verbs-de')
      fireEvent.click(germanButton);
      waitFor(() => {
@@ -76,7 +77,7 @@ describe('Homepage', () => {
 
    it('testing French verbs button', () => {
      const clickButton = jest.fn();
-     const { getByTestId } = render(<Home Francais={clickButton} />);
+     const { getByTestId } = render(<Home Francais={clickButton} />, { wrapper: BrowserRouter });
      const frenchButton = getByTestId('verbs-fr')
      fireEvent.click(frenchButton);
      waitFor(() => {
@@ -86,7 +87,7 @@ describe('Homepage', () => {
 
    it('testing Latin verbs button', () => {
      const clickButton = jest.fn();
-     const { getByTestId } = render(<Home Latin={clickButton} />);
+     const { getByTestId } = render(<Home Latin={clickButton} />, { wrapper: BrowserRouter });
      const latinButton = getByTestId('verbs-la')
      fireEvent.click(latinButton);
      waitFor(() => {
@@ -98,7 +99,7 @@ describe('Homepage', () => {
 describe('footer', () => {
   it('testing home button', () => {
     const clickButton = jest.fn();
-    const { getByText } = render(<Footer home={clickButton} />);
+    const { getByText } = render(<Footer home={clickButton} />, { wrapper: BrowserRouter });
     const homeButton = screen.getByAltText('home-icon')
     fireEvent.click(homeButton);
     waitFor(() => {

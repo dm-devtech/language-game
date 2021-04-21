@@ -96,20 +96,20 @@ class Home extends Component {
                   Select a language:
                 <br/>
                   <div className="german">
-                  <button data-testid="nouns-de" className="button" onClick={this.redirectHandlerGerman}>Deutsch (Nouns)</button>{this.renderRedirectGerman()}
-                  <button data-testid="verbs-de" className="button" onClick={this.redirectHandlerGermanVerbs}>Deutsch (Verbs)</button>{this.renderRedirectGermanVerbs()}
+                    <button data-testid="nouns-de" className="button" onClick={this.redirectHandlerGerman}>Deutsch (Nouns)</button>{this.renderRedirectGerman()}
+                    <button data-testid="verbs-de" className="button" onClick={this.redirectHandlerGermanVerbs}>Deutsch (Verbs)</button>{this.renderRedirectGermanVerbs()}
                   </div>
-                    <div className="french">
+                  <div className="french">
                     <button data-testid="nouns-fr" className="button" onClick={this.redirectHandlerFrench}>Français (Nouns)</button>{this.renderRedirectFrench()}
                     <button data-testid="verbs-fr" className="button" onClick={this.redirectHandlerFrenchVerbs}>Français (Verbs)</button>{this.renderRedirectFrenchVerbs()}
-                    </div>
-                      <div className="latin">
-                      <button data-testid="nouns-la" className="button" onClick={this.redirectHandlerLatin}>Lingua Romanorum (Nouns)</button>{this.renderRedirectLatin()}
-                      <button data-testid="verbs-la" className="button" onClick={this.redirectHandlerLatinVerbs}>Lingua Romanorum (Verbs)</button>{this.renderRedirectLatinVerbs()}
-                      </div>
-                    </div>
+                  </div>
+                  <div className="latin">
+                    <button data-testid="nouns-la" className="button" onClick={this.redirectHandlerLatin}>Lingua Romanorum (Nouns)</button>{this.renderRedirectLatin()}
+                    <button data-testid="verbs-la" className="button" onClick={this.redirectHandlerLatinVerbs}>Lingua Romanorum (Verbs)</button>{this.renderRedirectLatinVerbs()}
+                  </div>
                 </div>
           </div>
+      </div>
     )
   }
 }
