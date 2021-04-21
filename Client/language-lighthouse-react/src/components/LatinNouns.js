@@ -100,8 +100,6 @@ class LatinNouns extends Component {
       return word.wordtype === 'noun';
     })
 
-    console.log(filteredDictionary)
-
     this.setState({dictionary: filteredDictionary})
     this.setState({apiLength: this.state.dictionary.length-1})
 

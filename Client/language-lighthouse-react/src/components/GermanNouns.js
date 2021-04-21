@@ -103,12 +103,8 @@ class GermanNouns extends Component {
     this.setState({dictionary: filteredDictionary})
     this.setState({apiLength: this.state.dictionary.length-1})
 
-    console.log(filteredDictionary)
-
     const correctWord = await Math.floor(Math.random() * this.state.apiLength) // random number based on api length
     this.setState({wordToMatch: this.state.dictionary[correctWord]}) // allocating word to state
-
-    console.log(this.state.apiLength, this.state.wordToMatch)
 
     const randomOptions = await this.randomisedOptions(correctWord)
     const randomOrders = await this.randomisedOrder() // allocating randomised selection order
