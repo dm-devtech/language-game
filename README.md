@@ -1,6 +1,6 @@
 ### Langue Leuchtturm (Language Lighthouse)
 - A set of dictionary APIs and a game for learning languages built in React
-- [Play the game here!](http://language-lighthouse.herokuapp.com/)
+- [Play the game here!](https://language-lighthouse.herokuapp.com/)
 
 #### Languages:
 - German
@@ -12,9 +12,9 @@
 ![game](Screenshots/exampleFrench.JPG)
 
 ##### APIs Created
-- [German](http://language-lighthouse.herokuapp.com/api/german)
-- [French](http://language-lighthouse.herokuapp.com/api/french)
-- [Latin](http://language-lighthouse.herokuapp.com/api/latin)
+- [German](https://language-lighthouse.herokuapp.com/api/german)
+- [French](https://language-lighthouse.herokuapp.com/api/french)
+- [Latin](https://language-lighthouse.herokuapp.com/api/latin)
 
 ##### JSON Data Headers
   - ID (database word id)
