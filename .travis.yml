@@ -3,5 +3,7 @@ language: node_js
 node_js:
   - "15"
 
-script:
+before_install:
+  - cd Client\language-lighthouse-react\
+  - npm install
   - npm test
