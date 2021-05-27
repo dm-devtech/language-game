@@ -4,6 +4,6 @@ node_js:
   - "15"
 
 before_install:
-  - cd Client\language-lighthouse-react\
+  - cd ./Client/language-lighthouse-react/
   - npm install
   - npm test
