@@ -6,4 +6,4 @@ node_js:
 before_install:
   - cd ./Client/language-lighthouse-react/
   - npm install
-  - npm test
+  - yarn test
