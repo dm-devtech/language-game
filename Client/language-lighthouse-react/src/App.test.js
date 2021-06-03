@@ -58,38 +58,35 @@ describe('Homepage', () => {
     const { getByText } = render(<Home />, { wrapper: BrowserRouter });
     const latinButton = getByText('Lingua Romanorum (Nouns)')
     fireEvent.click(latinButton);
-    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledTimes(1);
     Home.prototype.renderRedirectLatin.mockRestore();
    });
 
    it('testing German verbs button', () => {
-     const clickButton = jest.fn();
-     const { getByTestId } = render(<Home Deutsch={clickButton} />, { wrapper: BrowserRouter });
-     const germanButton = getByTestId('verbs-de')
-     fireEvent.click(germanButton);
-     waitFor(() => {
-       expect(clickButton).toHaveBeenCalled();
-     });
+    const spy = jest.spyOn(Home.prototype, 'renderRedirectGermanVerbs');
+    const { getByText } = render(<Home />, { wrapper: BrowserRouter });
+    const germanButton = getByText('Deutsch (Verbs)')
+    fireEvent.click(germanButton);
+    expect(spy).toHaveBeenCalled();
+    Home.prototype.renderRedirectGermanVerbs.mockRestore();
    });
 
    it('testing French verbs button', () => {
-     const clickButton = jest.fn();
-     const { getByTestId } = render(<Home Francais={clickButton} />, { wrapper: BrowserRouter });
-     const frenchButton = getByTestId('verbs-fr')
+     const spy = jest.spyOn(Home.prototype, 'renderRedirectFrenchVerbs');
+     const { getByText } = render(<Home />, { wrapper: BrowserRouter });
+     const frenchButton = getByText('Français (Verbs)')
      fireEvent.click(frenchButton);
-     waitFor(() => {
-       expect(clickButton).toHaveBeenCalled();
-     });
+     expect(spy).toHaveBeenCalled();
+     Home.prototype.renderRedirectFrenchVerbs.mockRestore();
    });
 
    it('testing Latin verbs button', () => {
-     const clickButton = jest.fn();
-     const { getByTestId } = render(<Home Latin={clickButton} />, { wrapper: BrowserRouter });
-     const latinButton = getByTestId('verbs-la')
+     const spy = jest.spyOn(Home.prototype, 'renderRedirectLatinVerbs');
+     const { getByText } = render(<Home />, { wrapper: BrowserRouter });
+     const latinButton = getByText('Lingua Romanorum (Verbs)')
      fireEvent.click(latinButton);
-     waitFor(() => {
-       expect(clickButton).toHaveBeenCalled();
-     });
+     expect(spy).toHaveBeenCalled();
+     Home.prototype.renderRedirectLatinVerbs.mockRestore();
    });
 })
 
