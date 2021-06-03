@@ -35,24 +35,22 @@ describe('Homepage', () => {
       expect(homeDisplay.queryAllByText(/(Select a language)/))
    })
 
-   it('testing German Nouns button', () => {
-     const clickButton = jest.fn();
-     const { getByTestId } = render(<Home Deutsch={clickButton} />, { wrapper: BrowserRouter });
-     const germanButton = getByTestId('nouns-de')
+   test('testing German Nouns button', () => {
+     const spy = jest.spyOn(Home.prototype, 'renderRedirectGerman');
+     const { getByText } = render(<Home />, { wrapper: BrowserRouter });
+     const germanButton = getByText('Deutsch (Nouns)')
      fireEvent.click(germanButton);
-     waitFor(() => {
-       expect(clickButton).toHaveBeenCalled();
-     });
+     expect(spy).toHaveBeenCalled();
+     Home.prototype.renderRedirectGerman.mockRestore();
    });
 
    it('testing French Nouns button', () => {
-     const clickButton = jest.fn();
-     const { getByTestId } = render(<Home Francais={clickButton} />, { wrapper: BrowserRouter });
-     const frenchButton = getByTestId('nouns-fr')
-     fireEvent.click(frenchButton);
-     waitFor(() => {
-       expect(clickButton).toHaveBeenCalled();
-     });
+    const spy = jest.spyOn(Home.prototype, 'renderRedirectFrench');
+    const { getByText } = render(<Home />, { wrapper: BrowserRouter });
+    const frenchButton = getByText('Français (Nouns)')
+    fireEvent.click(frenchButton);
+    expect(spy).toHaveBeenCalled();
+    Home.prototype.renderRedirectFrench.mockRestore();
    });
 
    it('testing Latin Nouns button', () => {

@@ -23,7 +23,7 @@ class Home extends Component {
     this.renderRedirectGerman();
   }
 
-  renderRedirectGerman = () => {
+  renderRedirectGerman() {
     if (this.state.redirectGerman) {
       return <Redirect to='/game/german/nouns' />
     }
@@ -34,7 +34,7 @@ class Home extends Component {
     this.renderRedirectGermanVerbs();
   }
 
-  renderRedirectGermanVerbs = () => {
+  renderRedirectGermanVerbs() {
     if (this.state.redirectGermanVerbs) {
       return <Redirect to='/game/german/verbs' />
     }
@@ -45,7 +45,7 @@ class Home extends Component {
     this.renderRedirectFrench();
   }
 
-  renderRedirectFrench = () => {
+  renderRedirectFrench() {
     if (this.state.redirectFrench) {
       return <Redirect to='/game/french/nouns' />
     }
@@ -56,7 +56,7 @@ class Home extends Component {
     this.renderRedirectFrenchVerbs();
   }
 
-  renderRedirectFrenchVerbs = () => {
+  renderRedirectFrenchVerbs() {
     if (this.state.redirectFrenchVerbs) {
       return <Redirect to='/game/french/verbs' />
     }
@@ -67,7 +67,7 @@ class Home extends Component {
     this.renderRedirectLatin();
   }
 
-  renderRedirectLatin = () => {
+  renderRedirectLatin()  {
     if (this.state.redirectLatin) {
       return <Redirect to='/game/latin/nouns' />
     }
@@ -78,7 +78,7 @@ class Home extends Component {
     this.renderRedirectLatinVerbs();
   }
 
-  renderRedirectLatinVerbs = () => {
+  renderRedirectLatinVerbs() {
     if (this.state.redirectLatinVerbs) {
       return <Redirect to='/game/latin/verbs' />
     }
@@ -97,14 +97,17 @@ class Home extends Component {
                 <br/>
                   <div className="german">
                     <button data-testid="nouns-de" className="button" onClick={this.redirectHandlerGerman}>Deutsch (Nouns)</button>{this.renderRedirectGerman()}
+
                     <button data-testid="verbs-de" className="button" onClick={this.redirectHandlerGermanVerbs}>Deutsch (Verbs)</button>{this.renderRedirectGermanVerbs()}
                   </div>
                   <div className="french">
                     <button data-testid="nouns-fr" className="button" onClick={this.redirectHandlerFrench}>Français (Nouns)</button>{this.renderRedirectFrench()}
+
                     <button data-testid="verbs-fr" className="button" onClick={this.redirectHandlerFrenchVerbs}>Français (Verbs)</button>{this.renderRedirectFrenchVerbs()}
                   </div>
                   <div className="latin">
                     <button data-testid="nouns-la" className="button" onClick={this.redirectHandlerLatin}>Lingua Romanorum (Nouns)</button>{this.renderRedirectLatin()}
+
                     <button data-testid="verbs-la" className="button" onClick={this.redirectHandlerLatinVerbs}>Lingua Romanorum (Verbs)</button>{this.renderRedirectLatinVerbs()}
                   </div>
                 </div>
