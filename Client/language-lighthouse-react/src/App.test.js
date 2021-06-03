@@ -40,7 +40,7 @@ describe('Homepage', () => {
      const { getByText } = render(<Home />, { wrapper: BrowserRouter });
      const germanButton = getByText('Deutsch (Nouns)')
      fireEvent.click(germanButton);
-     expect(spy).toHaveBeenCalled();
+     expect(spy).toHaveBeenCalledTimes(1);
      Home.prototype.renderRedirectGerman.mockRestore();
    });
 
@@ -49,18 +49,17 @@ describe('Homepage', () => {
     const { getByText } = render(<Home />, { wrapper: BrowserRouter });
     const frenchButton = getByText('Français (Nouns)')
     fireEvent.click(frenchButton);
-    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledTimes(1);
     Home.prototype.renderRedirectFrench.mockRestore();
    });
 
    it('testing Latin Nouns button', () => {
-     const clickButton = jest.fn();
-     const { getByTestId } = render(<Home Latin={clickButton} />, { wrapper: BrowserRouter });
-     const latinButton = getByTestId('nouns-la')
-     fireEvent.click(latinButton);
-     waitFor(() => {
-       expect(clickButton).toHaveBeenCalled();
-     });
+    const spy = jest.spyOn(Home.prototype, 'renderRedirectLatin');
+    const { getByText } = render(<Home />, { wrapper: BrowserRouter });
+    const latinButton = getByText('Lingua Romanorum (Nouns)')
+    fireEvent.click(latinButton);
+    expect(spy).toHaveBeenCalled();
+    Home.prototype.renderRedirectLatin.mockRestore();
    });
 
    it('testing German verbs button', () => {
