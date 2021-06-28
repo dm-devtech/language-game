@@ -47,6 +47,9 @@
       "window": true
     },
     "testEnvironment": "jsdom"
-    }
+    },
+    {
+      "proxy": "http://localhost:3002"
+  }
   }
 
