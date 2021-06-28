@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import GermanNouns from './components/GermanNouns.js'
 import GermanVerbs from './components/GermanVerbs.js'
@@ -14,17 +14,35 @@ class App extends Component {
   render() {
     const App = () => (
     <div className="container">
-
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path='/game/german/nouns' component={GermanNouns} />
-        <Route path='/game/german/verbs' component={GermanVerbs} />
-        <Route path='/game/french/nouns' component={FrenchNouns} />
-        <Route path='/game/french/verbs' component={FrenchVerbs} />
-        <Route path='/game/latin/nouns' component={LatinNouns} />
-        <Route path='/game/latin/verbs' component={LatinVerbs} />
-      </Switch>
-
+      <Router>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/game/german/nouns">
+            <GermanNouns />
+            <Footer />
+          </Route>
+          <Route exact path="/game/german/verbs">
+            <GermanVerbs />
+            <Footer />
+          </Route>
+          <Route exact path="/game/french/nouns">
+            <FrenchNouns />
+            <Footer />
+          </Route>
+          <Route exact path="/game/french/verbs">
+            <FrenchVerbs />
+            <Footer />
+          </Route>
+          <Route exact path="/game/latin/nouns">
+            <LatinNouns />
+            <Footer />
+          </Route>
+          <Route exact path="/game/latin/verbs">
+            <LatinVerbs />
+            <Footer />
+          </Route>
+        </Router>
       </div>
     )
     return (

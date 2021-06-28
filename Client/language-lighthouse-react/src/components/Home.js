@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from "react-router-dom";
+import { Link, BrowserRouter, Redirect } from "react-router-dom";
 
 class Home extends Component {
   constructor(props) {
@@ -96,20 +96,20 @@ class Home extends Component {
                   Select a language:
                 <br/>
                   <div className="german">
-                    <button data-testid="nouns-de" className="button" onClick={this.redirectHandlerGerman}>Deutsch (Nouns)</button>
+                    <Link data-testid="nouns-de" className="button" to={"/game/german/nouns"} >Deutsch (Nouns)</Link>
 
-                    <button data-testid="verbs-de" className="button" onClick={this.redirectHandlerGermanVerbs}>Deutsch (Verbs)</button>
+                    <Link data-testid="verbs-de" className="button" to={"/game/german/verbs"} >Deutsch (Verbs)</Link>
                   </div>
                   <div className="french">
-                    <button data-testid="nouns-fr" className="button" onClick={this.redirectHandlerFrench}>Français (Nouns)</button>
+                    <Link data-testid="nouns-fr" className="button" to={"/game/french/nouns"} >Français (Nouns)</Link>
 
-                    <button data-testid="verbs-fr" className="button" onClick={this.redirectHandlerFrenchVerbs}>Français (Verbs)</button>
+                    <Link data-testid="verbs-fr" className="button" to={"/game/french/verbs"} >Français (Verbs)</Link>
                   </div>
                   <div className="latin">
-                    <button data-testid="nouns-la" className="button" onClick={this.redirectHandlerLatin}>Lingua Romanorum (Nouns)</button>
+                    <Link data-testid="nouns-la" className="button" to={"/game/latin/nouns"} >Lingua Romanorum (Nouns)</Link>
 
-                    <button data-testid="verbs-la" className="button" onClick={this.redirectHandlerLatinVerbs}>Lingua Romanorum (Verbs)</button>
-                  </div>
+                    <Link data-testid="verbs-la" className="button" to={"/game/latin/verbs"} >Lingua Romanorum (Verbs)</Link>
+                    </div>
                 </div>
           </div>
       </div>
