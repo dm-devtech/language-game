@@ -92,7 +92,7 @@ class LatinVerbs extends Component {
 
 
   async componentDidMount() {
-    const url = 'http://language-lighthouse.herokuapp.com/api/latin'
+    const url = 'https://language-lighthouse.herokuapp.com/api/latin'
     const response = await fetch(url)
     const data = await response.json()
 

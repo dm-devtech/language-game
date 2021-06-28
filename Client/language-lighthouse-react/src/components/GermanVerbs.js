@@ -92,7 +92,7 @@ class GermanVerbs extends Component {
 
 
   async componentDidMount() {
-    const url = 'http://language-lighthouse.herokuapp.com/api/german'
+    const url = 'https://language-lighthouse.herokuapp.com/api/german'
     const response = await fetch(url)
     const data = await response.json()
 

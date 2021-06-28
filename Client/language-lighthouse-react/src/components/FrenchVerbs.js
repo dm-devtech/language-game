@@ -92,7 +92,7 @@ class FrenchVerbs extends Component {
 
 
   async componentDidMount() {
-    const url = 'http://language-lighthouse.herokuapp.com/api/french'
+    const url = 'https://language-lighthouse.herokuapp.com/api/french'
     const response = await fetch(url)
     const data = await response.json()
 

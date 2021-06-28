@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import regeneratorRuntime from "regenerator-runtime";
 
 class FrenchNouns extends Component {
 
@@ -92,7 +93,7 @@ class FrenchNouns extends Component {
 
 
   async componentDidMount() {
-    const url = 'http://language-lighthouse.herokuapp.com/api/french'
+    const url = 'https://language-lighthouse.herokuapp.com/api/french'
     const response = await fetch(url)
     const data = await response.json()
 
@@ -113,6 +114,7 @@ class FrenchNouns extends Component {
     this.setState({selectionOne: this.state.dictionary[randomOptionOne]}) // setting selection to state used for buttons
     this.setState({selectionTwo: this.state.dictionary[randomOptionTwo]}) // same as above
     this.setState({selectionThree: this.state.dictionary[randomOptionThree]}) // same as above
+    console.log(this.state.selectionOne, this.state.selectionTwo, this.state.selectionThree)
   }
 
   render() {
@@ -126,11 +128,11 @@ class FrenchNouns extends Component {
               <div>
                 <div className="answer" data-testid="eng">English: {this.state.wordToMatch.eng}</div>
                   <div>
-                    <button className="button" onClick={this.checkAnswer} word_id={this.state.selectionOne.id}>{this.state.selectionOne.fre} </button>
+                    <button data-testid="a" className="button" onClick={this.checkAnswer} word_id={this.state.selectionOne.id}>{this.state.selectionOne.fre} </button>
                       <br/>
-                    <button className="button" onClick={this.checkAnswer} word_id={this.state.selectionTwo.id}>{this.state.selectionTwo.fre} </button>
+                    <button data-testid="b" className="button" onClick={this.checkAnswer} word_id={this.state.selectionTwo.id}>{this.state.selectionTwo.fre} </button>
                       <br/>
-                    <button className="button" onClick={this.checkAnswer} word_id={this.state.selectionThree.id}>{this.state.selectionThree.fre} </button>
+                    <button data-testid="c" className="button" onClick={this.checkAnswer} word_id={this.state.selectionThree.id}>{this.state.selectionThree.fre} </button>
                       <br/>
                   </div>
                     <div className="body-text">Score: {this.state.counter} {this.state.answerMsg}</div>
