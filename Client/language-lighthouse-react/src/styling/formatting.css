@@ -80,9 +80,10 @@ body {
    justify-content: center;
 }
 
-.button {
-  font: 16px Tahoma, sans-serif;
-  padding: 18px 18px;
+a.button {
+  font: 14px Tahoma, sans-serif;
+  letter-spacing: 0px;
+  padding: 12px 12px;
   text-align: center;
   cursor: pointer;
   outline: none;
@@ -91,15 +92,30 @@ body {
   border: none;
   border-radius: 10px;
   box-shadow: 0 9px #2F6690;
-  margin: 15px;
+  margin: 8px;
+}
+
+.button {
+  font: 14px Tahoma, sans-serif;
+  letter-spacing: 0px;
+  padding: 12px 12px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #2F6690;
+  background-color: #81C3D7;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 9px #2F6690;
+  margin: 8px;
 }
 
 .button:hover {
-  font: 16px Tahoma, sans-serif;
+  font: 14px Tahoma, sans-serif;
 }
 
 .button:active {
-  font: 16px Tahoma, sans-serif;
+  font: 14px Tahoma, sans-serif;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }

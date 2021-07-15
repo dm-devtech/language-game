@@ -96,19 +96,19 @@ class Home extends Component {
                   Select a language:
                 <br/>
                   <div className="german">
-                    <Link data-testid="nouns-de" className="button" to={"/game/german/nouns"} >Deutsch (Nouns)</Link>
+                    <Link style={{ textDecoration: 'none' }} data-testid="nouns-de" className="button" to={"/game/german/nouns"} >Deutsch (Nouns)</Link>
 
-                    <Link data-testid="verbs-de" className="button" to={"/game/german/verbs"} >Deutsch (Verbs)</Link>
+                    <Link style={{ textDecoration: 'none' }} data-testid="verbs-de" className="button" to={"/game/german/verbs"} >Deutsch (Verbs)</Link>
                   </div>
                   <div className="french">
-                    <Link data-testid="nouns-fr" className="button" to={"/game/french/nouns"} >Français (Nouns)</Link>
+                    <Link style={{ textDecoration: 'none' }} data-testid="nouns-fr" className="button" to={"/game/french/nouns"} >Français (Nouns)</Link>
 
-                    <Link data-testid="verbs-fr" className="button" to={"/game/french/verbs"} >Français (Verbs)</Link>
+                    <Link style={{ textDecoration: 'none' }} data-testid="verbs-fr" className="button" to={"/game/french/verbs"} >Français (Verbs)</Link>
                   </div>
                   <div className="latin">
-                    <Link data-testid="nouns-la" className="button" to={"/game/latin/nouns"} >Lingua Romanorum (Nouns)</Link>
+                    <Link style={{ textDecoration: 'none' }} data-testid="nouns-la" className="button" to={"/game/latin/nouns"} >Lingua Romanorum (Nouns)</Link>
 
-                    <Link data-testid="verbs-la" className="button" to={"/game/latin/verbs"} >Lingua Romanorum (Verbs)</Link>
+                    <Link style={{ textDecoration: 'none' }} data-testid="verbs-la" className="button" to={"/game/latin/verbs"} >Lingua Romanorum (Verbs)</Link>
                     </div>
                 </div>
           </div>
